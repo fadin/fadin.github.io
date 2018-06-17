@@ -1,1 +1,33 @@
-a test website
+<html>
+  <head>
+    <title>Nammour.com</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src=""></script>
+  </head>
+  
+  <body>
+    <script>
+    function ListerController($scope) {
+    $scope.users = [];
+
+    $scope.getUsers = () => {
+      $.when(sr._("CorporateMeasures.cmsUserFindall")).done(ret => {
+        alert(ret.length);
+        $scope.users = ret;
+      });
+    };
+    }
+    </script>
+
+    <div ng-app>
+      <div ng-controller="ListerController">
+        <button ng-submit="getUsers()">Get Users</button>
+        <ul>
+          <li ng-repeat="user in users">
+            <span>{{user.FirstName}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
