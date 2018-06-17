@@ -6,6 +6,17 @@
   </head>
   
   <body>
+    <div ng-app>
+      <div ng-controller="ListerController">
+        <button ng-submit="getUsers()">Get Users</button>
+        <ul>
+          <li ng-repeat="user in users">
+            <span>{{user.FirstName}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <script language="javascript">
     function ListerController($scope) {
     $scope.users = [];
@@ -18,16 +29,5 @@
     };
     }
     </script>
-
-    <div ng-app>
-      <div ng-controller="ListerController">
-        <button ng-submit="getUsers()">Get Users</button>
-        <ul>
-          <li ng-repeat="user in users">
-            <span>{{user.FirstName}}</span>
-          </li>
-        </ul>
-      </div>
-    </div>
   </body>
 </html>
