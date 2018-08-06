@@ -1,0 +1,46 @@
+var method_name = "ContentManager.cmsMethodResultFind";
+
+var server_time = new Date(2018, 7-1, 23, 14, 1, 13);
+
+var execution_time = 1.723887;
+
+ret = new Object();
+ret.ToString = "";
+ret._ToString = "";
+ret.Active = true;
+ret.Code = "078228df-03ca-4099-b5ce-16f57384e1f5";
+ret.Completed = new Date(0001, 1-1, 1, 0, 0, 0);
+ret.Date = new Date(2018, 7-1, 23, 14, 0, 40);
+ret.Order = 0;
+ret.Result = "";
+ret.Id = 31;
+ret.StoredMethodid = 2322;
+ret.StoredMethod = new Object();
+ret.StoredMethod.ToString = "comGroupCounts";
+ret.StoredMethod._ToString = "comGroupCounts";
+ret.StoredMethod.Active = true;
+ret.StoredMethod.AlwaysCache = false;
+ret.StoredMethod.AlwaysCompile = true;
+ret.StoredMethod.AlwaysGenerate = false;
+ret.StoredMethod.BodyCode = "System.Data.DataTable ret = new System.Data.DataTable();\ntry\n{\n    ret = User.groupView(idOver, new IDbTable[]{(IDbTable)idCount}, new string[]{\"id\"}, new string[]{\"COUNT\"}, Array.ConvertAll(dates, d => (object)d), \"takenOn\");\n    $_cmsDebug(User.register(\"_VIEW_SQL\").ToString());\n}catch(Exception ex){\n    $_cmsDebug(\"comGroupCounts: \" + ex.Message);\n}\nreturn ret;";
+ret.StoredMethod.Name = "comGroupCounts";
+ret.StoredMethod.ObjectBytes = "";
+ret.StoredMethod.ObjectCompiled = true;
+ret.StoredMethod.ObjectReturn = false;
+ret.StoredMethod.ReturnBytes = "";
+ret.StoredMethod.ReturnCode = "<?=$_DataTableToJS_(oret)?>";
+ret.StoredMethod.ReturnCompiled = true;
+ret.StoredMethod.ReturnSchema = "System.Data.DataTable";
+ret.StoredMethod.Signature = "Identity idCount, Identity[] idOver, DateTime[] dates";
+ret.StoredMethod.Sql = "";
+ret.StoredMethod.SqlMethod = false;
+ret.StoredMethod.Id = 2322;
+ret.StoredMethod.MethodLayers = new Array();
+ret.StoredMethod.ValidatedLayers = new Array();
+ret.StoredMethod.MethodResults = new Array();
+ret.StoredMethod.JobSchedules = new Array();
+ret.StoredMethod.MethodFiles = new Array();
+ret.StoredMethod.MethodLibraries = new Array();
+ret.StoredMethod.CompilationLogs = new Array();
+ret.StoredMethod.DebugLogs = new Array();
+ret.StoredMethod.MethodProperties = new Array();
