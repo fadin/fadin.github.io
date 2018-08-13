@@ -1,0 +1,93 @@
+<%
+var menus = [{
+    _code: 'index',
+    _name: 'Home',
+    _module: 'Main'
+    }
+];
+
+if(!window.me){
+    menus.push({
+        _code: 'login',
+        _name: 'Login',
+        _module: 'Main'
+    });
+}
+
+if(window.me){
+    menus.push({
+        _code: 'Upload',
+        _name: 'Upload',
+        _module: 'Data'
+    });
+    menus.push({
+        _code: 'FrameBuilder',
+        _name: 'Frame Builder',
+        _module: 'Analytics'
+    });
+    menus.push({
+        _code: 'analytics/run',
+        _name: 'Run Analytic',
+        _module: 'Analytics'
+    });
+    if(window.me.Admin) menus.push({
+        _code: 'Testing',
+        _name: 'Testing',
+        _module: 'Analytics'
+    });
+
+    var tables = ['Batch', 'DataField', 'DataMap', 'DataFrame', 'DataMapValue', 'GroupFilter', 'Comparison', 'Enquiry', 'EnquiryCondition', 'EnquiryParameter', 'Role', 'Tag', 'User', 'ChangeStep', 'Transformation'];
+    for(var i=0; i< tables.length; i++){
+        menus.push({_code: 'store', _param: tables[i], _name: sr.EnglishName(tables[i]), _module: 'Setup'});
+    }
+    
+    if(window.me.Admin){
+        var adminTables = ['Operation', 'PerformanceIdentity', 'PerformanceValue', 'ConditionFilter', 'Comparison', 'DashboardEntry', 'DataSet', 'DataSource', 'EnquiryExecution', 'Group', 'Identity', 'Interval', 'Measure', 'Organization', 'Aggregation', 'Performance'];
+        for(var i=0; i< adminTables.length; i++){
+            menus.push({_code: 'store', _param: adminTables[i], _name: sr.EnglishName(adminTables[i]), _module: 'Admin'});
+        }
+    }
+}
+
+var gMenus = groupBy(menus, "_module");
+%>
+	<style type="text/css">
+		#fm{
+			margin:0;
+			padding:10px 30px;
+		}
+		.ftitle{
+			font-size:14px;
+			font-weight:bold;
+			padding:5px 0;
+			margin-bottom:10px;
+			border-bottom:1px solid #ccc;
+		}
+		.fitem{
+			margin-bottom:5px;
+		}
+		.fitem label{
+			display:inline-block;
+			width:100px;
+		}
+		.fitem input{
+			width:160px;
+		}
+	</style>
+
+    <div style="margin:20px 0;"></div>
+    <div class="easyui-layout" style="width:<%=window.innerWidth*0.9%>px;height:<%=window.innerHeight*0.9%>px;">
+        <div data-options="region:'north'" style="height:50px"></div>
+        <div data-options="region:'south',split:true" style="height:50px;"></div>
+        <div data-options="region:'west',split:true" title="Main Menu" style="width:10%;">
+            <div class="easyui-accordion" data-options="fit:true,border:false">
+                <% for(var i=0; i< gMenus.length; i++){%>
+                <div title="<%=gMenus[i].key%>" style="padding:10px;">
+                    <% for(var j=0; j< gMenus[i].values.length; j++){%>
+                     <a href="#" onclick="RenderPage({_code: '<%=gMenus[i].values[j]._code%>'}, '<%=gMenus[i].values[j]._param%>')" class="easyui-linkbutton"><%=gMenus[i].values[j]._name%></a><br/>
+                    <% } %>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <div data-options="region:'center',title:'<%=company.Name%>',iconCls:'icon-ok'">
