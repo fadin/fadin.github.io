@@ -955,6 +955,14 @@ function ServiceRouter() {
 		var hCode = this.hashCode(
 			fun.substring(fun.indexOf('.') + 1) + postData
 		);
+		postData +=
+			this.CRNL +
+			this.CRNL +
+			'<!--<pid>' +
+			hCode +
+			'</pid>-->' +
+			this.CRNL;
+
 		this.ActiveRequest = {
 			URL: this.srURL + '&name=' + fun,
 			PostData: postData,

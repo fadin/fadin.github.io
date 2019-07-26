@@ -32,24 +32,24 @@ window.FrEMD = class {
     }
 
     _loadContent() {
-        $.get("blocks" + this.m() + "/header.htm" + this.randURL(), (html) => {
+        return $.get("blocks" + this.m() + "/header.htm" + this.randURL(), (html) => {
             console.log("header loaded");
             this.headerHTML = html;
         }).always(() => {
             this.step();
-            $.get("blocks" + this.m() + "/footer.htm" + this.randURL(), (html) => {
+            return $.get("blocks" + this.m() + "/footer.htm" + this.randURL(), (html) => {
                 console.log("footer loaded");
                 this.footerHTML = html;
             }).always(() => {
                 this.step();
-                $.get("blocks" + this.m() + "/content.htm" + this.randURL(), (html) => {
+                return $.get("blocks" + this.m() + "/content.htm" + this.randURL(), (html) => {
                     console.log("content loaded");
                     this.contentHTML = html;
                 }).always(() => {
                     this.step();
-                    window.lang = this.hash['lang'] || company.Language || 'en';
+                    window.lang = this.hash.lang || company.Language || 'en';
                     return this.RenderPage({
-                        _code: (this.hash['page'] || 'index')
+                        _code: (this.hash.page || 'index')
                     });
                     //setURL("page=" + (this.hash['page'] || 'index'));
                 });
@@ -57,20 +57,46 @@ window.FrEMD = class {
         });
     }
 
-    init() {
-        window._FrEMD = this;
-        this.fromHash();
+    initDOM() {
+        window.document.body.style.visibility = 'hidden';
+        return $.when(this.preInit()).then(() => {
+            $.when(((company && company.OnPageLoad) ? company.OnPageLoad : () => {})()).then(() => {
+                if (frames[0].reRender) {
+                    frames[0].reRender();
+                }
+                if (typeof(ko) !== "undefined") {
+                    setTimeout(() => {
+                        ko.applyBindings(window, window.frames[0].document.body);
+                        window.title = window.frames[0].document.title; //??
+                        window.document.body.style.visibility = 'visible';
+                    }, 100);
+                }
+            });
+        });
+    }
 
-        $.when(this.require("Company")).always(() => {
-            $.when(this.require("ServiceRouter")).always(() => {
-                this._initServiceRouter();
-                $.when(...$.map(company.Required, l => this.require(l))).always(() => {
-                    $.when(this._loadEntityClasses()).always(() => {
-                        console.log("Done Loading");
-                        this._loadContent();
-                    })
-                })
-            })
+    preInit() {
+        return $.Deferred(def => {
+            window._FrEMD = this;
+            this.fromHash();
+
+            $.when(this.require("Company")).always(() => {
+                $.when(this.require("ServiceRouter")).always(() => {
+                    this._initServiceRouter();
+                    $.when(...$.map(company.Required, l => this.require(l))).always(() => {
+                        $.when(this._loadEntityClasses()).always(() => {
+                            console.log("Done Loading");
+                            def.resolve(null);
+                        });
+                    });
+                });
+            });
+        }).promise();
+    }
+
+    init() {
+        $.when(this.preInit()).then(() => {
+            return this._loadContent();
         });
     }
 
@@ -140,7 +166,7 @@ window.FrEMD = class {
     }
 
     _css(link) {
-        $("<link/>", {
+        return $("<link/>", {
             rel: "stylesheet",
             type: "text/css",
             href: link
@@ -149,11 +175,29 @@ window.FrEMD = class {
 
     require(libName) {
         console.log("require[" + libName + "]");
+        var _hrefs = $.grep(this.hrefs, l => l.lib === libName && this._include(l));
+        var calls = [];
+        $.each(_hrefs, (_, n) => {
+            var _css = Array.isArray(n.css) ? n.css : [n.css];
+            $.each(_css, (_, c) => calls.push(this._css(c)));
+            var _srcs = Array.isArray(n.src) ? n.src : [n.src];
+            $.each(_srcs, (_, s) => calls.push($.getScript(s)));
+        });
+        return $.when(...calls);
+    }
 
-        return $.when(...$.map($.map($.grep(this.hrefs, l => l.lib === libName && this._include(l)), n => {
-            $.each(Array.isArray(n.css) ? n.css : [n.css], (_, css) => this._css(css));
-            return Array.isArray(n.src) ? n.src : [n.src];
-        }), s => $.getScript(s)));
+    toBase64(url, data, mime) {
+        mime = (mime || 'application/octet-stream');
+        var prefix = 'data:' + mime + ';base64,';
+        var _data = this._inject($.ajax({
+            url: url + '?' + Math.random(),
+            async: false
+        }).responseText, data);
+        //_data = 'this is a test';
+        return window.URL.createObjectURL(new Blob([_data]), {
+            type: mime
+        });
+        //return prefix + /*encodeURIComponent*/ atob();
     }
 
     toPDF(filename, pages) {

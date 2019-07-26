@@ -182,8 +182,6 @@ $(document).on('ready', function() {
 
     /**** WOW-ANIMATE ****/
     new WOW().init();
-
-    parent.templateRendered();
 });
 
 /**** LOADER ****/

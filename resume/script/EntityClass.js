@@ -182,18 +182,97 @@ for(var i=0; i<c.EntityAttributes.length; i++)
             if (this.EntityValues[i].EntityAttribute.Name == aName) return this.EntityValues[i];
     }
 
+    this.findAll = async function(depth = 1) {
+        var _THIS = [{
+            EntityObject: this.toEntityObject(true)
+        }];
+        for (var i = 1; i <= depth; i++) {
+            _THIS.push({
+                Active: true,
+                EntityObject: {
+                    Active: true,
+                    ValueEntities: [_THIS[i - 1]]
+                }
+            });
+        }
+
+        <% $.each(c.TypedAttributes, (_, ta) => {%>
+        _THIS.push({
+            EntityObject: new <%=ta.EntityClass.Name.replace(' ', '_')%>().<%=ta.Name.replace(' ', '_')%>(this).toEntityObject(true)
+        });
+        _THIS.push({
+            EntityObject: {
+                Active: true,
+                ValueEntities: [{
+                    EntityObject: new <%=ta.EntityClass.Name.replace(' ', '_')%>().<%=ta.Name.replace(' ', '_')%>(this).toEntityObject(true)
+                }]
+            }
+        });
+        <% }); %>
+
+        return $.when(sr._("EnterpriseManager.emsEntityValueFindall", null, {
+            THIS: _THIS
+        })).then(evs => {
+            //console.log(evs.length);
+            var obj = [];
+            $.each(sr.groupBy(evs, "EntityObject"), (_, evg) => {
+                //console.log(evg);
+                $.each(window.EntityClasses, (_, ec) => {
+                    if (ec.Id == evg.key.EntityClassid) {
+                        var c = new window[ec.Name.replace(' ', '_')]();
+                        c.EntityValues = evg.values;
+                        c.Id = evg.key.Id;
+                        obj.push(c);
+                    }
+                });
+            });
+
+            $.each(obj, (_, r) => {
+                r.ValueEntities = $.grep(evs, ev => ev.EntityObject.Id == r.Id && ev.ObjectValue);
+                $.each(r.EntityValues, (_, ev) => {
+                    var ea = ev.EntityAttribute;
+                    //console.log(ev);
+                    var attrN = "";
+                    if (ea.IsBool) attrN = "Bool";
+                    if (ea.IsInt) attrN = "Int";
+                    if (ea.IsLong) attrN = "Long";
+                    if (ea.IsFloat) attrN = "Float";
+                    if (ea.IsImage) attrN = "Image";
+                    if (ea.IsString) attrN = "String";
+                    if (ea.IsText) attrN = "Text";
+                    if (ea.IsDate) attrN = "Date";
+                    if (ea.EntityTypeid) {
+                        var refO = $.grep(obj, o => o.Id == ev.ObjectValueid)[0];
+                        //console.log("r." + ea.Name.replace(' ', '_') + "()", refO);
+                        r[ea.Name.replace(' ', '_')]($.grep(obj, o => o.Id == ev.ObjectValueid)[0]);
+                    } else {
+                        r[ea.Name.replace(' ', '_')](ev[attrN + "Value"]);
+                    }
+                });
+            });
+
+            var ret = $.grep(obj, o => o.EntityClass.Id == this.EntityClass.Id); // we might pick also the references that are of the same class
+            //console.log(ret.length);
+
+            //console.log(obj);
+
+            $.each(ret, (_, r) => {
+                <% $.each(c.TypedAttributes, (_, ta) => {%>
+                r.<%=ta.Name.replace(' ', '_')%>_<%=ta.EntityClass.Plural.replace(' ', '_')%>($.grep(obj, o => o.EntityClass.Id == <%=ta.EntityClass.Id%> && o._<%=ta.Name.replace(' ', '_')%> && o._<%=ta.Name.replace(' ', '_')%>.Id == r.Id));
+                <% }); %>
+            });
+            //console.log(obj);
+
+            return ret;
+        });
+    }
+
     this.insert = function() {
         return sr._("EnterpriseManager.emsEntityObjectInsert", null, this.toEntityObject());
     }
 
     this.update = function() {
         return sr._("EnterpriseManager.emsEntityObjectUpdate", null, this.toEntityObject());
-    }
-
-    this.findAll = function() {
-        return sr._("EnterpriseManager.emsFormValues", null, {
-            EntityObject: this.toEntityObject(true)
-        });
     }
 
     this.toEntityObject = function(bQuery) {
