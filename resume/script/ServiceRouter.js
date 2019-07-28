@@ -1054,6 +1054,7 @@ function ServiceRouter() {
 					Math.random();
 				if (!callBack) {
 					var data = null;
+					console.log(_theUrl);
 					this.Get(_theUrl).always(function (responseText) {
 						data = fResponseText(responseText);
 						cacheCall(data);
