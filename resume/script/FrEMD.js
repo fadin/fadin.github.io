@@ -101,7 +101,7 @@ window.FrEMD = class {
     }
 
     _loadEntityClasses() {
-        var EntityClassJS = "script/EntityClass.js_";
+        var EntityClassJS = "script/EntityClass.jst";
         if (typeof window.company !== 'undefined' && window.company && !window.company.Store) {
             EntityClassJS = "/nammour.com/ems/" + EntityClassJS;
         }
