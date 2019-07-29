@@ -21,7 +21,7 @@ function ServiceRouter() {
 
 	var s_ErrorMessages;
 
-	this.$_REQUEST = function (key) {
+	this.$_REQUEST = function(key) {
 		key = key.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
 		var regexS = '[\\?&]' + key + '=([^&#]*)';
 		var regex = new RegExp(regexS);
@@ -35,13 +35,13 @@ function ServiceRouter() {
 
 		if (ret)
 			ret = ret
-			.replace(/%22/g, '"')
-			.replace(/%27/g, "'")
-			.replace(/%20/g, ' ');
+				.replace(/%22/g, '"')
+				.replace(/%27/g, "'")
+				.replace(/%20/g, ' ');
 		return ret;
 	};
 
-	this.init = function (
+	this.init = function(
 		srURL,
 		systemName,
 		bPost,
@@ -51,7 +51,8 @@ function ServiceRouter() {
 	) {
 		if (!bDebug && document.URL.indexOf('debug=true') > 0) bDebug = true;
 
-		this.bLocal = !this.Store && !(document.URL.indexOf('local=false') >= 0);
+		this.bLocal =
+			!this.Store && !(document.URL.indexOf('local=false') >= 0);
 
 		this.bCache = this.$_REQUEST('cache');
 
@@ -89,7 +90,7 @@ function ServiceRouter() {
 
 		this.systemName = systemName;
 
-		this.preProcessHTML = function (html) {
+		this.preProcessHTML = function(html) {
 			if (!html) return html;
 
 			try {
@@ -128,7 +129,7 @@ function ServiceRouter() {
 		return this;
 	};
 
-	this.groupBy = function (ar, field) {
+	this.groupBy = function(ar, field) {
 		if (!ar || !field) return null;
 
 		fields = field.split('.');
@@ -137,7 +138,9 @@ function ServiceRouter() {
 		for (var i = 0; i < ar.length; i++) {
 			var key = null;
 			for (
-				var f = 0; f < fields.length; key = (key || ar[i])[fields[f++]]
+				var f = 0;
+				f < fields.length;
+				key = (key || ar[i])[fields[f++]]
 			);
 			try {
 				keys[
@@ -151,16 +154,13 @@ function ServiceRouter() {
 					})()
 				].values.push(ar[i]);
 			} catch {
-				keys.push({
-					key: key,
-					values: [ar[i]]
-				});
+				keys.push({ key: key, values: [ar[i]] });
 			}
 		}
 		return keys;
 	};
 
-	this.compile = function (arModules) {
+	this.compile = function(arModules) {
 		var calls = [];
 		$.each(arModules, (i, m) =>
 			calls.push(
@@ -178,7 +178,7 @@ function ServiceRouter() {
 		});
 	};
 
-	this.import = function (arModules) {
+	this.import = function(arModules) {
 		var calls = [];
 		$.each(arModules, (i, m) =>
 			calls.push(
@@ -197,14 +197,14 @@ function ServiceRouter() {
 		});
 	};
 
-	this.getObject = function (s) {
+	this.getObject = function(s) {
 		var code = s + ';';
 		code = '(typeof ' + s + " === 'undefined')?sr.newObject():" + s;
 		//return this.runScript(s+";");
 		return this.runScript(code);
 	};
 
-	this.runScript = function (s) {
+	this.runScript = function(s) {
 		if (!s) return null;
 
 		try {
@@ -252,7 +252,7 @@ function ServiceRouter() {
 		}
 
 		try {
-			var fn = function () {
+			var fn = function() {
 				var ret = window.eval.call(window, s);
 				return ret;
 			};
@@ -263,7 +263,7 @@ function ServiceRouter() {
 		}
 	};
 
-	this.ShowObject = function (o, bIgnoreDebug) {
+	this.ShowObject = function(o, bIgnoreDebug) {
 		var ret = 'Object Structure:\n';
 		for (s in o) {
 			try {
@@ -276,16 +276,16 @@ function ServiceRouter() {
 		this.ShowDebug(ret, bIgnoreDebug);
 	};
 
-	this.ShowError = function (s) {
+	this.ShowError = function(s) {
 		console.log(s);
 		if (this.bShowErrors) this.ShowMessage(s);
 	};
 
-	this.ccopy = function (s) {
+	this.ccopy = function(s) {
 		if (window.clipboardData) clipboardData.setData('Text', s);
 	};
 
-	this.ShowMessage = function (s) {
+	this.ShowMessage = function(s) {
 		if (typeof noty !== 'undefined') {
 			noty({
 				text: s,
@@ -302,11 +302,11 @@ function ServiceRouter() {
 		}
 	};
 
-	this.ShowDebug = function (s, bIgnoreDebug) {
+	this.ShowDebug = function(s, bIgnoreDebug) {
 		if (this.bDebug || bIgnoreDebug) this.ShowMessage(s);
 	};
 
-	this.param = function (args) {
+	this.param = function(args) {
 		var ret =
 			'/*' +
 			this.CRNL +
@@ -335,18 +335,18 @@ function ServiceRouter() {
 		return ret;
 	};
 
-	this.resetCursor = function () {
+	this.resetCursor = function() {
 		document.body.style.cursor = 'arrow';
 		document.body.style.cursor = '';
 	};
 
-	this.serverDate = function () {
+	this.serverDate = function() {
 		return this.addMSeconds(new Date(), -this.timeDifference);
 	};
 
 	this.arCache = new Array();
 
-	this.PostCache = function (index, fCallBack) {
+	this.PostCache = function(index, fCallBack) {
 		return;
 		if (!this.bCache) return;
 
@@ -356,13 +356,14 @@ function ServiceRouter() {
 				calls.push(
 					this._(
 						'ContentManager.cmsDumpCache',
-						null, {
+						null,
+						{
 							Date: c.Date,
 							Code: c.hash,
 							Result: c.Response,
 						},
 						'/nammour.com/store/' +
-						(window.company ? window.company.Code : ''),
+							(window.company ? window.company.Code : ''),
 						true
 					)
 				);
@@ -386,22 +387,23 @@ function ServiceRouter() {
 
 			this._(
 				'ContentManager.cmsDumpCache',
-				function (r) {
+				function(r) {
 					//window.sr.ShowObject(r, true);
 					window.sr.PostCache(index - 1, fCallBack);
-				}, {
+				},
+				{
 					Date: c.Date,
 					Code: c.hash,
 					Result: c.Response,
 				},
 				'/nammour.com/store/' +
-				(window.company ? window.company.Code : ''),
+					(window.company ? window.company.Code : ''),
 				true
 			);
 		}
 	};
 
-	this.processResponse = function (readyState, callBack, responseText, url) {
+	this.processResponse = function(readyState, callBack, responseText, url) {
 		if (readyState != 4) return;
 
 		var sMethodName = url.substring(
@@ -437,7 +439,7 @@ function ServiceRouter() {
 
 			if (server_time)
 				this.timeDifference =
-				new Date().getTime() - server_time.getTime();
+					new Date().getTime() - server_time.getTime();
 
 			if (_exception) {
 				this.ShowDebug(_exception.Message);
@@ -475,13 +477,13 @@ function ServiceRouter() {
 				) {
 					this.ShowError(
 						'Mismatch in Method between server and client:\nServer Method Name: ' +
-						method_name +
-						'\nClient Method Name: ' +
-						sMethodName
+							method_name +
+							'\nClient Method Name: ' +
+							sMethodName
 					);
 				}
 				(this.fLoadingEnd ||
-					function () {
+					function() {
 						window.sr.resetCursor();
 					})();
 				return callRet || ret || (bScriptError ? responseText : null);
@@ -497,7 +499,7 @@ function ServiceRouter() {
 		return null;
 	};
 
-	this.isObject = function (o) {
+	this.isObject = function(o) {
 		return (
 			o != null &&
 			typeof o == 'object' &&
@@ -506,7 +508,7 @@ function ServiceRouter() {
 		);
 	};
 
-	this._toJS = function (o) {
+	this._toJS = function(o) {
 		if (o == null) return 'null';
 
 		var s = '';
@@ -550,13 +552,13 @@ function ServiceRouter() {
 						tzminutes -= 60;
 					}
 					tzminutes =
-						tzminutes.toString().length == 1 ?
-						'0' + tzminutes.toString() :
-						tzminutes.toString();
+						tzminutes.toString().length == 1
+							? '0' + tzminutes.toString()
+							: tzminutes.toString();
 					tzhours =
-						tzhours.toString().length == 1 ?
-						'0' + tzhours.toString() :
-						tzhours.toString();
+						tzhours.toString().length == 1
+							? '0' + tzhours.toString()
+							: tzhours.toString();
 					var timezone =
 						(o.getTimezoneOffset() < 0 ? '+' : '-') +
 						tzhours +
@@ -617,7 +619,7 @@ function ServiceRouter() {
 		return s;
 	};
 
-	this.escapeString = function (text) {
+	this.escapeString = function(text) {
 		if (!arguments.callee.sRE) {
 			var specials = [
 				'\r',
@@ -659,7 +661,7 @@ function ServiceRouter() {
 		return ret;
 	};
 
-	this._toXML = function (o, level) {
+	this._toXML = function(o, level) {
 		if (!level) level = 0;
 		var s = '';
 		if (o == null) return s;
@@ -699,13 +701,13 @@ function ServiceRouter() {
 						tzminutes -= 60;
 					}
 					tzminutes =
-						tzminutes.toString().length == 1 ?
-						'0' + tzminutes.toString() :
-						tzminutes.toString();
+						tzminutes.toString().length == 1
+							? '0' + tzminutes.toString()
+							: tzminutes.toString();
 					tzhours =
-						tzhours.toString().length == 1 ?
-						'0' + tzhours.toString() :
-						tzhours.toString();
+						tzhours.toString().length == 1
+							? '0' + tzhours.toString()
+							: tzhours.toString();
 					var timezone =
 						(o.getTimezoneOffset() < 0 ? '+' : '-') +
 						tzhours +
@@ -778,7 +780,8 @@ function ServiceRouter() {
 				}
 				// Object or custom function
 				else {
-					if (o == null || o.Id == 0) {} else if (false && o.Id) {
+					if (o == null || o.Id == 0) {
+					} else if (false && o.Id) {
 						// this is creating a problem, better send all the object
 						// do not send other data if we have a value for the Id
 						s += '<Id>' + this._toXML(o.Id, level++) + '</Id>';
@@ -803,27 +806,27 @@ function ServiceRouter() {
 		return s;
 	};
 
-	this.OR = function (o, p) {
-		return o.ORS && o.ORS[p] ?
-			" OR='" +
-			this.myReplace(o.ORS[p], ['<', '>'], ['&lt;', '&gt;']) +
-			"'" :
-			'';
+	this.OR = function(o, p) {
+		return o.ORS && o.ORS[p]
+			? " OR='" +
+					this.myReplace(o.ORS[p], ['<', '>'], ['&lt;', '&gt;']) +
+					"'"
+			: '';
 	};
 
-	this.coop = function (o, p) {
-		return o.OPERATORS && o.OPERATORS[p] ?
-			" coop='" +
-			this.myReplace(
-				o.OPERATORS[p],
-				['<', '>'],
-				['&lt;', '&gt;']
-			) +
-			"'" :
-			'';
+	this.coop = function(o, p) {
+		return o.OPERATORS && o.OPERATORS[p]
+			? " coop='" +
+					this.myReplace(
+						o.OPERATORS[p],
+						['<', '>'],
+						['&lt;', '&gt;']
+					) +
+					"'"
+			: '';
 	};
 
-	this.getXmlHTTP = function () {
+	this.getXmlHTTP = function() {
 		var x = null;
 		var activexmodes = ['Msxml2.XMLHTTP', 'Microsoft.XMLHTTP']; //activeX versions to check for in IE
 		if (window.ActiveXObject) {
@@ -846,9 +849,9 @@ function ServiceRouter() {
 		return (window.xmlHTTP = x);
 	};
 
-	this.__ = function (fun, callBack, args) {};
+	this.__ = function(fun, callBack, args) {};
 
-	this.promise = function (data, callBack) {
+	this.promise = function(data, callBack) {
 		this.Deferred();
 
 		if (callBack) {
@@ -859,7 +862,7 @@ function ServiceRouter() {
 		return window.deferred ? window.deferred.promise() : false;
 	};
 
-	this.doHeadlessCall = function (fCallBack) {
+	this.doHeadlessCall = function(fCallBack) {
 		if (!this.company.headlesSettings) return null;
 		var settings = this.company.headlesSettings();
 		$.ajax(settings).done(response => {
@@ -872,14 +875,14 @@ function ServiceRouter() {
 					} catch (e) {
 						window.sr.ShowError(
 							'Error in Callback:\n\n' +
-							fCallBack +
-							'\n\n' +
-							e.message
+								fCallBack +
+								'\n\n' +
+								e.message
 						);
 					}
 				}
 				(this.fLoadingEnd ||
-					function () {
+					function() {
 						window.sr.resetCursor();
 					})();
 				return data;
@@ -899,14 +902,14 @@ function ServiceRouter() {
 						} catch (e) {
 							this.ShowError(
 								'Error in Callback:\n\n' +
-								fCallBack +
-								'\n\n' +
-								e.message
+									fCallBack +
+									'\n\n' +
+									e.message
 							);
 						}
 					}
 					(this.fLoadingEnd ||
-						function () {
+						function() {
 							window.sr.resetCursor();
 						})();
 					return null;
@@ -915,11 +918,11 @@ function ServiceRouter() {
 		});
 	};
 
-	this._ = function (fun, callBack) {
+	this._ = function(fun, callBack) {
 		if (this.s_ErrorMessages.length > 0) {
 			alert(
 				'The following errors were found in your data:\n' +
-				this.s_ErrorMessages
+					this.s_ErrorMessages
 			);
 			this.s_ErrorMessages = '';
 			return null;
@@ -927,7 +930,7 @@ function ServiceRouter() {
 
 		//var postData = "System.Collections.ArrayList ret = new System.Collections.ArrayList();"+this.CRNL;
 		(this.fLoadingStart ||
-			function () {
+			function() {
 				document.body.style.cursor = 'wait';
 			})();
 
@@ -972,7 +975,7 @@ function ServiceRouter() {
 		if (!this.bLocal) {
 			// live
 			try {
-				var fResponseText = function (responseText, fCallBack) {
+				var fResponseText = function(responseText, fCallBack) {
 					ret = null;
 					server_time = null;
 					_exception = null;
@@ -990,7 +993,7 @@ function ServiceRouter() {
 
 					if (server_time)
 						window.sr.timeDifference =
-						new Date().getTime() - server_time.getTime();
+							new Date().getTime() - server_time.getTime();
 
 					if (_exception) {
 						window.sr.ShowDebug(_exception.Message);
@@ -1004,21 +1007,21 @@ function ServiceRouter() {
 							try {
 								fCallBack(
 									ret ||
-									data ||
-									(_exception ? responseText : null),
+										data ||
+										(_exception ? responseText : null),
 									_exception
 								);
 							} catch (e) {
 								window.sr.ShowError(
 									'Error in Callback:\n\n' +
-									fCallBack +
-									'\n\n' +
-									e.message
+										fCallBack +
+										'\n\n' +
+										e.message
 								);
 							}
 						}
 						(window.sr.fLoadingEnd ||
-							function () {
+							function() {
 								window.sr.resetCursor();
 							})();
 						return (
@@ -1027,7 +1030,7 @@ function ServiceRouter() {
 					}
 				};
 
-				var cacheCall = function (data) {
+				var cacheCall = function(data) {
 					if (window.sr.ActiveRequest && data) {
 						window.sr.ActiveRequest.Response = data;
 						window.sr.arCache[window.sr.arCache.length] =
@@ -1046,24 +1049,23 @@ function ServiceRouter() {
 				var _theUrl =
 					(this.Store ||
 						'/store/' +
-						(window.company && window.company.Code ?
-							window.company.Code + '/' :
-							'/')) +
+							(window.company && window.company.Code
+								? window.company.Code + '/'
+								: '/')) +
 					hCode +
-					'.txt?rand=' +
+					'.js?rand=' +
 					Math.random();
 				if (!callBack) {
 					var data = null;
-					console.log(_theUrl);
-					this.Get(_theUrl).always(function (responseText) {
+					this.Get(_theUrl).always(function(responseText) {
 						data = fResponseText(responseText);
 						cacheCall(data);
 					});
-					return new $.Deferred(function (def) {
+					return new $.Deferred(function(def) {
 						def.resolve(data);
 					}).promise();
 				} else {
-					this.Get(_theUrl, function (responseText) {
+					this.Get(_theUrl, function(responseText) {
 						var data = fResponseText(responseText, callBack);
 						cacheCall(data);
 					});
@@ -1081,7 +1083,7 @@ function ServiceRouter() {
 		}
 	};
 
-	this._url = function (fun, filename) {
+	this._url = function(fun, filename) {
 		var args = Array();
 		for (var i = 2; i < arguments.length; i++) {
 			args[i - 2] = arguments[i];
@@ -1110,7 +1112,7 @@ function ServiceRouter() {
 		);
 	};
 
-	this._json = function (fun) {
+	this._json = function(fun) {
 		var args = Array();
 		for (var i = 1; i < arguments.length; i++) {
 			args[i - 1] = arguments[i];
@@ -1129,7 +1131,7 @@ function ServiceRouter() {
 		);
 	};
 
-	this.myReplace = function (s, fc, rc) {
+	this.myReplace = function(s, fc, rc) {
 		if (typeof s !== 'string') return s;
 
 		var ret = '';
@@ -1145,7 +1147,7 @@ function ServiceRouter() {
 		return ret;
 	};
 
-	this.runCode = function (csCode, jsCode, pXML, callBack) {
+	this.runCode = function(csCode, jsCode, pXML, callBack) {
 		// avoid using this please
 		var postData = 'StoredMethod m = new StoredMethod();' + this.CRNL;
 		postData +=
@@ -1166,25 +1168,20 @@ function ServiceRouter() {
 		this.sendXML(this.srURL + '&code=true', postData, callBack);
 	};
 
-	this.Get = function (url, callBack) {
+	this.Get = function(url, callBack) {
 		if (!callBack) {
 			// synchronous mode
 			if (!window.jQuery) {
 				// no jquery
 			} else {
-				return $.Deferred(function (def) {
+				return $.Deferred(function(def) {
 					$.ajax({
 						type: 'GET',
 						url: url,
 						async: false,
 						processData: false,
-						complete: function (data) {
-							if (data.statusText == 'OK') {
-								def.resolve(data.responseText);
-							} else {
-								def.resolve(null);
-							}
-						},
+						success: data => def.resolve(data),
+						error: err => def.resolve(null),
 					});
 				}).promise();
 			}
@@ -1197,19 +1194,14 @@ function ServiceRouter() {
 					type: 'GET',
 					url: url,
 					processData: false,
-					complete: function (data) {
-						if (data.statusText == 'OK') {
-							callBack(data.responseText);
-						} else {
-							callBack(null);
-						}
-					},
+					success: data => callBack(data),
+					error: err => callBack(null),
 				});
 			}
 		}
 	};
 
-	this.Post = function (
+	this.Post = function(
 		url,
 		callBack,
 		postData,
@@ -1240,7 +1232,7 @@ function ServiceRouter() {
 				for (var i = 0; i < headers.length; i++)
 					xmlHTTP.setRequestHeader(headers[i].key, headers[i].value);
 
-			xmlHTTP.onreadystatechange = function () {
+			xmlHTTP.onreadystatechange = function() {
 				if (window.xmlHTTP.readyState == 4 && callBack) {
 					callBack(window.xmlHTTP.responseText);
 				}
@@ -1249,7 +1241,7 @@ function ServiceRouter() {
 		}
 	};
 
-	this.hashCode = function (s) {
+	this.hashCode = function(s) {
 		var hash = 0,
 			i,
 			chr,
@@ -1263,7 +1255,7 @@ function ServiceRouter() {
 		return hash;
 	};
 
-	this.processResult = function (res, url) {
+	this.processResult = function(res, url) {
 		if (!res || !res.Code || !res.StoredMethod) {
 			window.resolve(res);
 			return;
@@ -1290,18 +1282,18 @@ function ServiceRouter() {
 			// more than we can wait, we return a reference to the result
 			console.log(
 				'We cannot wait ' +
-				Math.floor(timeout / 1000) +
-				' seconds. Returning result.'
+					Math.floor(timeout / 1000) +
+					' seconds. Returning result.'
 			);
 			window.resolve(res);
 			return;
 		}
 		console.log(
 			'Making the next call in ' +
-			Math.floor(timeout / 1000) +
-			' seconds.'
+				Math.floor(timeout / 1000) +
+				' seconds.'
 		);
-		setTimeout(function () {
+		setTimeout(function() {
 			window.SR._('ContentManager.cmsMethodResultFind', ret => {}, {
 				Code: res.Code,
 				Id: res.Id,
@@ -1309,10 +1301,10 @@ function ServiceRouter() {
 		}, timeout);
 	};
 
-	this.Deferred = function () {
+	this.Deferred = function() {
 		window.resolve =
 			window.resolve ||
-			function (r) {
+			function(r) {
 				window.deferred ? window.deferred.resolve(r) : null; //console.log('window.deferred is null');
 			};
 		if (typeof window.jQuery === 'undefined') return;
@@ -1320,7 +1312,7 @@ function ServiceRouter() {
 		window.deferred = $.Deferred();
 	};
 
-	this.sendXML = function (url, postData, callBack) {
+	this.sendXML = function(url, postData, callBack) {
 		this.Deferred();
 
 		if (!window.SR) window.SR = this;
@@ -1329,7 +1321,7 @@ function ServiceRouter() {
 
 		if (xmlHTTP) {
 			if (callBack != null) {
-				window.xmlHTTP.onreadystatechange = function () {
+				window.xmlHTTP.onreadystatechange = function() {
 					if (window.xmlHTTP.readyState == 4) {
 						window.SR.processResult(
 							window.SR.processResponse(
@@ -1370,7 +1362,7 @@ function ServiceRouter() {
 					); // fool cross-domain checking in chrome
 					window.xmlHTTP.send(
 						'POSTDATA=\r\n' /*+ "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n"*/ +
-						postData
+							postData
 					);
 				} else {
 					xmlHTTP.open(
@@ -1413,23 +1405,23 @@ function ServiceRouter() {
 					cache: false,
 					async: true,
 					data: postData,
-				}).done(function (data) {
+				}).done(function(data) {
 					this.processResult(
 						this.processResponse(4, callBack, data, a_url),
 						a_url
 					);
 				});
 			}
-			return !callBack && window.deferred ?
-				window.deferred.promise() :
-				true;
+			return !callBack && window.deferred
+				? window.deferred.promise()
+				: true;
 		} else
-			return !callBack && window.deferred ?
-				window.deferred.promise() :
-				false;
+			return !callBack && window.deferred
+				? window.deferred.promise()
+				: false;
 	};
 
-	this.toHex = function (s) {
+	this.toHex = function(s) {
 		if (typeof s !== 'string') return s;
 
 		var ret = '';
@@ -1443,7 +1435,7 @@ function ServiceRouter() {
 		return ret;
 	};
 
-	this.ascii_value = function (c) {
+	this.ascii_value = function(c) {
 		// restrict input to a single character
 		c = c.charAt(0);
 
@@ -1469,35 +1461,35 @@ function ServiceRouter() {
 	/**
 	 * Date Functions
 	 */
-	this.daysDiff = function (d2, d1) {
+	this.daysDiff = function(d2, d1) {
 		return Math.ceil((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
 	};
 
-	this.addMSeconds = function (o, ms) {
+	this.addMSeconds = function(o, ms) {
 		return new Date(o.getTime() + ms);
 	};
 
-	this.addSeconds = function (o, s) {
+	this.addSeconds = function(o, s) {
 		return this.addMSeconds(o, s * 1000);
 	};
 
-	this.addMinutes = function (o, m) {
+	this.addMinutes = function(o, m) {
 		return this.addSeconds(o, m * 60);
 	};
 
-	this.addHours = function (o, h) {
+	this.addHours = function(o, h) {
 		return this.addMinutes(o, h * 60);
 	};
 
-	this.addDays = function (o, d) {
+	this.addDays = function(o, d) {
 		return this.addHours(o, d * 24);
 	};
 
-	this.addYears = function (o, y) {
+	this.addYears = function(o, y) {
 		return this.addMonths(o, y * 12);
 	};
 
-	this.addMonths = function (o, m) {
+	this.addMonths = function(o, m) {
 		return new Date(
 			o.getFullYear(),
 			o.getMonth() + m,
@@ -1508,7 +1500,7 @@ function ServiceRouter() {
 		);
 	};
 
-	this.isDate = function (o) {
+	this.isDate = function(o) {
 		return (
 			o != null &&
 			o.constructor != null &&
@@ -1516,12 +1508,12 @@ function ServiceRouter() {
 		);
 	};
 
-	this.toShortDate = function (o) {
+	this.toShortDate = function(o) {
 		if (!this.isDate(o)) return ''; // avoid nulls
 		return o.getMonth() + 1 + '/' + o.getDate() + '/' + o.getFullYear();
 	};
 
-	this.toShortTime = function (o) {
+	this.toShortTime = function(o) {
 		if (!this.isDate(o)) return ''; // avoid nulls
 		var hours = '' + o.getHours(); //o.getHours()%12;
 		var minutes = '' + o.getMinutes();
@@ -1532,7 +1524,7 @@ function ServiceRouter() {
 		return hours + ':' + minutes + ':' + seconds; // + " " + (o.getHours()>=12?"PM":"AM");
 	};
 
-	this.toDateTime = function (o) {
+	this.toDateTime = function(o) {
 		if (!this.isDate(o)) return ''; // avoid nulls
 		return this.toShortDate(o) + ' ' + this.toShortTime(o);
 	};
@@ -1540,7 +1532,7 @@ function ServiceRouter() {
 	 * END: Date Functions
 	 */
 
-	this.setProperty = function (cid, s, prop, def) {
+	this.setProperty = function(cid, s, prop, def) {
 		if (!cid) return;
 		var o = $(cid);
 		if (!o) return;
@@ -1579,7 +1571,7 @@ function ServiceRouter() {
 	/**
 	 * Validation
 	 */
-	this.validNotNull = function (s) {
+	this.validNotNull = function(s) {
 		if (typeof s == 'string') {
 			return s && s.length > 0;
 		} else {
@@ -1587,11 +1579,11 @@ function ServiceRouter() {
 		}
 	};
 
-	this.validObject = function (o) {
+	this.validObject = function(o) {
 		return o != null;
 	};
 
-	this.validEmail = function (str) {
+	this.validEmail = function(str) {
 		var at = '@';
 		var dot = '.';
 		var lat = str.indexOf(at);
@@ -1617,7 +1609,7 @@ function ServiceRouter() {
 		}
 	};
 
-	this.validate = function (o, type, config) {
+	this.validate = function(o, type, config) {
 		if (typeof o == 'string') o = $(o);
 		var bAlert = true;
 		if (!o) return;
@@ -1688,7 +1680,7 @@ function ServiceRouter() {
 	 * END: Validation
 	 */
 
-	this.EnglishName = function (s) {
+	this.EnglishName = function(s) {
 		var ret = '';
 		for (var i = 0; i < s.length; i++) {
 			if (s[i] >= 'A' && s[i] <= 'Z') {
@@ -1704,13 +1696,13 @@ function ServiceRouter() {
 	};
 
 	/** Object Comparison **/
-	this.newObject = function () {
+	this.newObject = function() {
 		var ret = new Object();
 		ret.__OBJECTID = Math.random();
 		return ret;
 	};
 
-	this.Equals = function (o1, o2) {
+	this.Equals = function(o1, o2) {
 		if (o1 == o2) return true;
 
 		if (
@@ -1733,12 +1725,12 @@ function ServiceRouter() {
 		name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
 		var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
 			results = regex.exec(location.search);
-		return results === null ?
-			'' :
-			decodeURIComponent(results[1].replace(/\+/g, ' '));
+		return results === null
+			? ''
+			: decodeURIComponent(results[1].replace(/\+/g, ' '));
 	}
 
-	this.serialize = function (_obj) {
+	this.serialize = function(_obj) {
 		try {
 			// Let Gecko browsers do this the easy way
 			if (
@@ -1758,7 +1750,7 @@ function ServiceRouter() {
 					return _obj;
 					break;
 
-					// for JSON format, strings need to be wrapped in quotes
+				// for JSON format, strings need to be wrapped in quotes
 				case 'string':
 					return "'" + _obj + "'";
 					break;
