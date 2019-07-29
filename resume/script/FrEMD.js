@@ -64,7 +64,7 @@ window.FrEMD = class {
                 if (frames[0].reRender) {
                     frames[0].reRender();
                 }
-                if (typeof(ko) !== "undefined") {
+                if (typeof (ko) !== "undefined") {
                     setTimeout(() => {
                         ko.applyBindings(window, window.frames[0].document.body);
                         window.title = window.frames[0].document.title; //??
@@ -101,7 +101,7 @@ window.FrEMD = class {
     }
 
     _loadEntityClasses() {
-        var EntityClassJS = "script/EntityClass.js";
+        var EntityClassJS = "script/EntityClass.js_";
         if (typeof window.company !== 'undefined' && window.company && !window.company.Store) {
             EntityClassJS = "/nammour.com/ems/" + EntityClassJS;
         }
@@ -654,7 +654,7 @@ window.FrEMD = class {
     }
 
     _alert(msg, delay) {
-        if (typeof(noty) !== "undefined") {
+        if (typeof (noty) !== "undefined") {
             noty({
                 text: msg,
                 type: 'success',
@@ -761,9 +761,9 @@ window.FrEMD = class {
 
             if (company.GACode) {
                 // google analytics
-                (function(i, s, o, g, r, a, m) {
+                (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
-                    i[r] = i[r] || function() {
+                    i[r] = i[r] || function () {
                         (i[r].q = i[r].q || []).push(arguments)
                     }, i[r].l = 1 * new Date();
                     a = s.createElement(o),

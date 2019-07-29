@@ -1050,7 +1050,7 @@ function ServiceRouter() {
 							window.company.Code + '/' :
 							'/')) +
 					hCode +
-					'.js?rand=' +
+					'.txt?rand=' +
 					Math.random();
 				if (!callBack) {
 					var data = null;
