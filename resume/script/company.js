@@ -7,6 +7,11 @@ var company = {
     OnPageLoad: () => {
         return $.when(new User().code(sr.$_REQUEST("code"), "=").findAll()).then(ret => {
             window.me = ret[0];
+            window.me._user_User_Experiences.sort((a, b) => b._from - a._from);
+            window.me._user_User_Educations.sort((a, b) => b._from - a._from);
+            window.me._user_User_Skills.sort((a, b) => b._percentage - a._percentage);
+            window.me._user_User_Publications.sort((a, b) => b._date - a._date);
+
             window.frames[0].location = 'website/' + window.me._template._code;
         });
     },
