@@ -12,7 +12,14 @@ var company = {
             window.me._user_User_Skills.sort((a, b) => b._percentage - a._percentage);
             window.me._user_User_Publications.sort((a, b) => b._date - a._date);
 
-            window.frames[0].location = 'website/' + window.me._template._code;
+            (async () => {
+                let ipdata = await $.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?');
+                if ($.grep(window.me._user_User_Country_Exclusions, ex => ex._country._name == ipdata.geobytescountry).length) {
+                    console.log("Country Not Supported");
+                } else {
+                    window.frames[0].location = 'website/' + window.me._template._code;
+                }
+            })();
         });
     },
 };

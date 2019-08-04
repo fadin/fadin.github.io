@@ -69,7 +69,7 @@ window.FrEMD = class {
                         ko.applyBindings(window, window.frames[0].document.body);
                         window.title = window.frames[0].document.title; //??
                         window.document.body.style.visibility = 'visible';
-                    }, 100);
+                    }, 500);
                 }
             });
         });
