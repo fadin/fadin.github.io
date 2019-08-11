@@ -10,7 +10,7 @@
     <meta name="keywords" content="">
 
 
-    <title data-bind="text: 'Resume - _name'">Decent Material CV | Resume</title>
+    <title data-bind="text: 'Resume - me._name'">Decent Material CV | Resume</title>
     <!-- Fav Icon -->
     <link rel="icon" href="images/fav-icon.png">
     <!-- Apple Touch Icon -->
@@ -91,7 +91,7 @@
     <div class="text-div text-center animated zoomIn">
         <p class="text-uppercase">INTRODUCING</p>
         <!-- Name Only -->
-        <h6 class="text-uppercase" data-bind="text: _name">JOHN ROBERT SMITH</h6>
+        <h6 class="text-uppercase" data-bind="text: me._name">JOHN ROBERT SMITH</h6>
     </div>
 </div>
 
@@ -130,9 +130,9 @@
                         <div id="nav-profile" class="center-block">
 
                             <!-- Profile Picture [Square] -->
-                            <img data-bind="attr: { src: 'data:image/png;base64,' + _picture, alt: _name}" src="images/profile-pic.png">
+                            <img data-bind="attr: { src: 'data:image/png;base64,' + me._picture, alt: me._name}" src="images/profile-pic.png">
                         </div>
-                        <h6 class="text-center text-capitalize" data-bind="text: _title + ' ' + _name">John Robert Smith</h6>
+                        <h6 class="text-center text-capitalize" data-bind="text: me._title + ' ' + me._name">John Robert Smith</h6>
                     </div>
 
                     <div id="nav-link-wrapper">
@@ -167,8 +167,8 @@
 
     <!-- Name and Status -->
     <div id="intro" class="container">
-        <h1 class="text-center text-capitalize" data-bind="text: _title + ' ' + _name">John Robert Smith</h1>
-        <h4 class="text-center text-capitalize"  data-bind="text: _user_User_Experiences[0]._position._name">Web Designer & Developer, UX/UI Expert</h4>
+        <h1 class="text-center text-capitalize" data-bind="text: me._title + ' ' + me._name">John Robert Smith</h1>
+        <h4 class="text-center text-capitalize"  data-bind="text: me._user_User_Experiences[0]._position._name">Web Designer & Developer, UX/UI Expert</h4>
     </div>
 </div>
 
@@ -182,17 +182,17 @@
 
                 <!-- Profile Picture [Square] -->
                 <div id="profile" class="center-block">
-                    <img data-bind="attr: { src: 'data:image/png;base64,' + _picture, alt: _name}" src="images/profile-pic.png">
+                    <img data-bind="attr: { src: 'data:image/png;base64,' + me._picture, alt: me._name}" src="images/profile-pic.png">
                 </div>
 
                 <!-- Social Links -->
                 <div id="intro-div" class="card content-wrapper">
-                    <ul class="text-center list-inline" data-bind="foreach: _user_User_Socials">
+                    <ul class="text-center list-inline" data-bind="foreach: me._user_User_Socials">
                         <li><a data-bind="href: $data._url" href="home.html#0" target="_blank"><i data-bind="class: 'ion-social-'+$data._social._name.toLowerCase()" class="ion-social-facebook"></i></a></li>
                     </ul>
 
                     <!-- Some Intro About You -->
-                    <p class="text-center" data-bind="html: _about">
+                    <p class="text-center" data-bind="html: me._about">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
                         In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
                         venenatis pharetra mi, ut vestibulum elit ultricies a. Vestibulum at mollis ex, ac consectetur
@@ -204,7 +204,7 @@
                         <!-- Download & Contact Button -->
                         <div class="col col-xs-12 col-sm-12 col-md-12 text-center">
                             <!-- Your CV File -->
-                            <a href="cv/cv-file.docx" download="cv-file.docx" class="btn waves-effect waves-light btn-primary custom-btn">Download CV</a>
+                            <a onclick="this.href=parent._FrEMD.toBase64(parent.me._resumeTemplate._location, parent.me);this.download='Resume - '+parent.me._name+'.doc'" data-bind_="attr: {'href': parent._FrEMD.toBase64($data._resumeTemplate._location, $data), 'download': 'Resume - '+me._name+'.doc'}" download_="Resume.doc" target="cv" class="btn waves-effect waves-light btn-primary custom-btn">Download CV</a>
                             <a href="home.html#contact" class="btn waves-effect waves-light btn-primary custom-btn">Contact Me</a>
                         </div>
                     </div>
@@ -226,7 +226,7 @@
 
                 <!-- Timeline -->
                 <div class="timeline center-block">
-                    <ul data-bind="foreach: _user_User_Experiences">
+                    <ul data-bind="foreach: me._user_User_Experiences">
                         <li class="card" data-aos="fade-up">
                             <i class="title-icon fa fa-circle"></i>
                             <div class="timeline-content">
@@ -238,7 +238,7 @@
 
                                 <!-- Organization and Period -->
                                 <p class="sub-heading"><span data-bind="text: $data._company._name">Lorem Ipsum Technology</span> - <span data-bind="text: $data._company._country._name">South Africa</span></p>
-                                <p class="sub-heading"><span data-bind="text: $data._Year_From">January 2012</span> - <span data-bind="text: $data._Year_To">December 2015</span></p>
+                                <p class="sub-heading"><span data-bind="text: ($data._from.getMonth()+1) + '/' + $data._from.getFullYear()">January 2012</span> - <span data-bind="text: $data._to<=new window.Date('1970-01-01')?'Current':(($data._to.getMonth()+1) + '/' + $data._to.getFullYear())">December 2015</span></p>
 
                                 <!-- Job Summary -->
                                 <p class="content-p" data-bind="html: $data._Description">
@@ -262,7 +262,7 @@
 <section id="skills" class="section">
     <h4 class="text-uppercase text-center">Skills</h4>
     <div class="container">
-        <div class="row" data-bind="foreach: parent.sr.groupBy(_user_User_Skills, '_skill._type')">
+        <div class="row" data-bind="foreach: sr.groupBy(me._user_User_Skills, '_skill._type')">
 
             <!-- Professional Skills -->
             <div class="col col-md-4 col-sm-4 col-xs-12">
@@ -298,92 +298,23 @@
 
                 <!-- Timeline -->
                 <div class="timeline center-block">
-                    <ul>
-                        <li class="card" data-aos="fade-up">
+                    <ul data-aos="fade-up" data-bind="foreach: me._user_User_Educations">
+                        <li class="card">
                             <i class="title-icon fa fa-circle"></i>
                             <div class="timeline-content">
 
                                 <!-- Heading -->
                                 <div class="timeline-header">
-                                    <h3 class="text-capitalize">Master of Computer Science & engineering</h3>
+                                    <h3 class="text-capitalize" data-bind="text: $data._level._name + ' - ' + $data._discipline._name">Master of Computer Science & engineering</h3>
                                 </div>
 
                                 <!-- Institution, Period & result -->
-                                <p class="sub-heading">Harvard University - United States</p>
-                                <p class="sub-heading">January 2012 - December 2015</p>
-                                <p class="sub-heading">Result: 4.0 out of 4.0</p>
+                                <p class="sub-heading" data-bind="text: $data._university._name">Harvard University - United States</p>
+                                <p class="sub-heading"><span data-bind="text: ($data._from.getMonth()+1) + '/' + $data._from.getFullYear()">January 2012</span> - <span data-bind="text: $data._to<=new window.Date('1970-01-01')?'Current':(($data._to.getMonth()+1) + '/' + $data._to.getFullYear())">December 2015</span></p>
+                                <p class="sub-heading" data-bind="text: ''">Result: 4.0 out of 4.0</p>
 
                                 <!-- Education Summary -->
-                                <p class="content-p">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Atque, facilis quo. Maiores magnam modi ab libero praesentium
-                                    blanditiis consequatur aspernatur accusantium maxime molestiae sunt ipsa.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="card" data-aos="fade-up">
-                            <i class="title-icon fa fa-circle"></i>
-                            <div class="timeline-content">
-
-                                <!-- Heading -->
-                                <div class="timeline-header">
-                                    <h3 class="text-capitalize">Bachelor Of Computer Science & Engineering</h3>
-                                </div>
-
-                                <!-- Institution, Period & result -->
-                                <p class="sub-heading">Harvard University - United States</p>
-                                <p class="sub-heading">January 2012 - December 2015</p>
-                                <p class="sub-heading">Result: 4.0 out of 4.0</p>
-
-                                <!-- Education Summary -->
-                                <p class="content-p">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Atque, facilis quo. Maiores magnam modi ab libero praesentium
-                                    blanditiis consequatur aspernatur accusantium maxime molestiae sunt ipsa.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="card" data-aos="fade-up">
-                            <i class="title-icon fa fa-circle"></i>
-                            <div class="timeline-content">
-
-                                <!-- Heading -->
-                                <div class="timeline-header">
-                                    <h3 class="text-capitalize">Master of Computer Science & engineering</h3>
-                                </div>
-
-                                <!-- Institution, Period & result -->
-                                <p class="sub-heading">Harvard University - United States</p>
-                                <p class="sub-heading">January 2012 - December 2015</p>
-                                <p class="sub-heading">Result: 4.0 out of 4.0</p>
-
-                                <!-- Education Summary -->
-                                <p class="content-p">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Atque, facilis quo. Maiores magnam modi ab libero praesentium
-                                    blanditiis consequatur aspernatur accusantium maxime molestiae sunt ipsa.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="card" data-aos="fade-up">
-                            <i class="title-icon fa fa-circle"></i>
-                            <div class="timeline-content">
-
-                                <!-- Heading -->
-                                <div class="timeline-header">
-                                    <h3 class="text-capitalize">Bachelor Of Computer Science & Engineering</h3>
-                                </div>
-
-                                <!-- Institution, Period & result -->
-                                <p class="sub-heading">Harvard University - United States</p>
-                                <p class="sub-heading">January 2012 - December 2015</p>
-                                <p class="sub-heading">Result: 4.0 out of 4.0</p>
-
-                                <!-- Education Summary -->
-                                <p class="content-p">
+                                <p class="content-p" data-bind="html: $data._Information">
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                     Atque, facilis quo. Maiores magnam modi ab libero praesentium
                                     blanditiis consequatur aspernatur accusantium maxime molestiae sunt ipsa.
@@ -404,16 +335,16 @@
 <section id="services" class="section">
     <h4 class="text-uppercase text-center">Services</h4>
     <div class="container">
-        <ul class="row">
+        <ul class="row" data-bind="foreach: me._user_User_Services">
 
             <!-- 1st service -->
             <li class="col col-md-4 col-sm-6 col-xs-12">
                 <div class="card service-item text-center">
                     <!-- Edit icon and title here -->
-                    <i class="ion-social-android" data-aos="fade" data-aos-delay="300" data-aos-offset="0"></i>
-                    <h6 class="text-capitalize">Android Application</h6>
+                    <i class="ion-social-android" data-bind="attr: {class: 'ion-' + {'mobile': 'social-android', 'webapp': 'code', 'ios': 'social-apple', 'cloudapp': 'cloud', 'uidesign': 'paintbrush', 'sysadmin': 'settings', 'itconsult': 'social-people'}[$data._service._code]}" data-aos="fade" data-aos-delay="300" data-aos-offset="0"></i>
+                    <h6 class="text-capitalize" data-bind="text: $data._name">Android Application</h6>
                     <!-- service info here -->
-                    <p class="text-center">
+                    <p class="text-center" data-bind="html: $data._information">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
                         In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel. Vestibulum
                         venenatis pharetra mi, ut vestibulum elit ultricies.
@@ -421,86 +352,6 @@
                 </div>
             </li>
             <!-- ./1st service -->
-
-            <!-- 2nd service -->
-            <li class="col col-md-4 col-sm-6 col-xs-12">
-                <div class="card service-item text-center">
-                    <!-- Edit icon and title here -->
-                    <i class="ion-code" data-aos="fade" data-aos-delay="300" data-aos-offset="0"></i>
-                    <h6 class="text-capitalize">Web Development</h6>
-                    <!-- service info here -->
-                    <p class="text-center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel. Vestibulum
-                        venenatis pharetra mi, ut vestibulum elit ultricies.
-                    </p>
-                </div>
-            </li>
-            <!-- ./2nd service -->
-
-            <!-- 3rd service -->
-            <li class="col col-md-4 col-sm-6 col-xs-12">
-                <div class="card service-item text-center">
-                    <!-- Edit icon and title here -->
-                    <i class="ion-social-apple" data-aos="fade" data-aos-delay="300" data-aos-offset="0"></i>
-                    <h6 class="text-capitalize">IOS Application</h6>
-                    <!-- service info here -->
-                    <p class="text-center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel. Vestibulum
-                        venenatis pharetra mi, ut vestibulum elit ultricies.
-                    </p>
-                </div>
-            </li>
-            <!-- ./3rd service -->
-
-            <!-- 4th service -->
-            <li class="col col-md-4 col-sm-6 col-xs-12">
-                <div class="card service-item text-center">
-                    <!-- Edit icon and title here -->
-                    <i class="ion-cloud" data-aos="fade" data-aos-delay="300" data-aos-offset="0"></i>
-                    <h6 class="text-capitalize">Cloud Computing</h6>
-                    <!-- service info here -->
-                    <p class="text-center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel. Vestibulum
-                        venenatis pharetra mi, ut vestibulum elit ultricies.
-                    </p>
-                </div>
-            </li>
-            <!-- ./5th service -->
-
-            <!-- 5th service -->
-            <li class="col col-md-4 col-sm-6 col-xs-12">
-                <div class="card service-item text-center">
-                    <!-- Edit icon and title here -->
-                    <i class="ion-paintbrush" data-aos="fade" data-aos-delay="300" data-aos-offset="0"></i>
-                    <h6 class="text-capitalize">UI/UX Design</h6>
-                    <!-- service info here -->
-                    <p class="text-center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel. Vestibulum
-                        venenatis pharetra mi, ut vestibulum elit ultricies.
-                    </p>
-                </div>
-            </li>
-            <!-- ./5th service -->
-
-            <!-- 6th service -->
-            <li class="col col-md-4 col-sm-6 col-xs-12">
-                <div class="card service-item text-center">
-                    <!-- Edit icon and title here -->
-                    <i class="ion-settings" data-aos="fade" data-aos-delay="300" data-aos-offset="0"></i>
-                    <h6 class="text-capitalize">Troubleshooting</h6>
-                    <!-- service info here -->
-                    <p class="text-center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel. Vestibulum
-                        venenatis pharetra mi, ut vestibulum elit ultricies.
-                    </p>
-                </div>
-            </li>
-            <!-- ./6th service -->
 
         </ul>
     </div>
@@ -516,52 +367,48 @@
         <div class="row">
             <!-- A basic setup of simple mode filter controls, all you have to do is use data-filter="all"
             for an unfiltered gallery and then the values of your categories to filter between them -->
-            <ul class="text-center simple-filter" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300">
-                <li class="active-cat" data-filter="all"><a>All</a></li>
-                <li data-filter="1"><a>Creative</a></li>
-                <li data-filter="2"><a>Photography</a></li>
-                <li data-filter="3"><a>Food</a></li>
-                <li data-filter="4"><a>Colorful</a></li>
-                <li data-filter="5"><a>Personal</a></li>
+            <ul class="text-center simple-filter" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300" data-bind="foreach: parent.sr.groupBy(me._user_User_Portfolios, '_type')">
+                <li data-bind="style: {display: $index()?'none':''}" class="active-cat" data-filter="all"><a>All</a></li>
+                <li data-bind="attr: {'data-filter': $data.key.Id}" data-filter="1"><a data-bind="text: $data.key._name">Creative</a></li>
             </ul>
 
-            <div class="filtr-container center-block">
+            <div class="filtr-container center-block" data-bind="foreach: me._user_User_Portfolios">
 
                 <!-- 1st Portfolio, Filter Option -->
-                <div class="col col-md-3 col-sm-6 col-xs-12 filtr-item" data-category="1, 5">
+                <div class="col col-md-3 col-sm-6 col-xs-12 filtr-item" data-category="1, 5" data-bind="attr: {'data-category': $data._type.Id}" >
                     <div class="portfolio card">
                         <figure class="hover-effect">
                             <!-- Portfolio Image -->
-                            <img class="img-responsive" src="images/portfolios/p1.jpg" alt="">
+                            <img class="img-responsive" data-bind="attr: { src: 'data:image/png;base64,' + $data._image }" src="images/portfolios/p1.jpg" alt="">
                             <!-- open-modal ID -->
-                            <a data-toggle="modal" data-target="#modal1" href="home.html#0">
+                            <a data-toggle="modal" data-bind="attr: {'data-target': '#modal'+$data.Id, href: 'home.html#' + $data.Id}" data-target="#modal1" href="home.html#0">
                                 <figcaption><span>View Details</span></figcaption>
                             </a>
                         </figure>
                         <!-- Portfolio Title -->
-                        <h6 class="text-capitalize text-center">Portfolio Title Here</h6>
+                        <h6 class="text-capitalize text-center" data-bind="text: $data._name">Portfolio Title Here</h6>
                     </div>
                 </div>
                 <!-- ./Portfolio -->
                 <!-- 1st MODAL -->
-                <div id="modal1" class="modal" tabindex="-1" role="dialog">
+                <div data-bind="attr: {id: 'modal'+$data.Id}" id="modal1" class="modal" tabindex="-1" role="dialog">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content animated zoomIn">
-                            <h3 class="text-capitalize text-left">Project title will be placed here</h3>
+                            <h3 class="text-capitalize text-left" data-bind="text: $data._name">Project title will be placed here</h3>
                             <div class="row">
                                 <!-- Modal Image -->
-                                <img class="img-responsive col-md-8 col-sm-12 col-xs-12" src="images/portfolios/p1.jpg" alt="">
+                                <img class="img-responsive col-md-8 col-sm-12 col-xs-12" data-bind="attr: { src: 'data:image/png;base64,' + $data._image }" src="images/portfolios/p1.jpg" alt="">
 
                                 <!-- Modal Content -->
                                 <div class="content col-md-4 col-sm-12 col-xs-12">
                                     <!-- Date, Category & Client Name of the Project -->
-                                    <p><span>Date:&nbsp;</span> 5, July 2015</p>
-                                    <p><span>Category:&nbsp;</span> System Development</p>
-                                    <p><span>Client:&nbsp;</span> Mr. John Doe</p>
+                                    <p><span>Date:&nbsp;</span> <span data-bind="text: ($data._date.getMonth()+1) + '/' + $data._date.getFullYear()">5, July 2015</span></p>
+                                    <p><span>Category:&nbsp;</span> <span data-bind="text: $data._type._name">System Development</span></p>
+                                    <p><span>Client:&nbsp;</span> <span data-bind="text: $data._client?$data._client._name:''">Mr. John Doe</span></p>
                                     <!-- Live Demo Link -->
-                                    <a href="home.html#0" target="_blank" class="btn modal-btn waves-effect waves-light btn-primary custom-btn">Live Demo</a>
+                                    <a href="home.html#0" data-bind="attr: {href: $data._url}" target="_blank" class="btn modal-btn waves-effect waves-light btn-primary custom-btn">Live Demo</a>
                                     <!-- Some Information Abut the Project -->
-                                    <p class="text-left">
+                                    <p class="text-left" data-bind="html: $data._information">
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
                                         In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
                                         venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet, consectetur
@@ -577,371 +424,6 @@
                     </div>
                 </div>
                 <!-- ./modal -->
-
-
-                <!-- 2nd Portfolio, Filter Option -->
-                <div class="col col-md-3 col-sm-6 col-xs-12 filtr-item" data-category="2, 3, 4">
-                    <div class="portfolio card">
-                        <figure class="hover-effect">
-                            <!-- Portfolio Image -->
-                            <img class="img-responsive" src="images/portfolios/p2.jpg" alt="">
-                            <!-- open-modal ID -->
-                            <a data-toggle="modal" data-target="#modal2" href="home.html#0">
-                                <figcaption><span>View Details</span></figcaption>
-                            </a>
-                        </figure>
-                        <!-- Portfolio Title -->
-                        <h6 class="text-capitalize text-center">Portfolio Title Here</h6>
-                    </div>
-                </div>
-                <!-- ./Portfolio -->
-                <!-- 2nd MODAL -->
-                <div id="modal2" class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content animated zoomIn">
-                            <h3 class="text-capitalize text-left">Project title will be placed here</h3>
-                            <div class="row">
-                                <!-- Modal Image -->
-                                <img class="img-responsive col-md-8 col-sm-12 col-xs-12" src="images/portfolios/p2.jpg" alt="">
-
-                                <!-- Modal Content -->
-                                <div class="content col-md-4 col-sm-12 col-xs-12">
-                                    <!-- Date, Category & Client Name of the Project -->
-                                    <p><span>Date:&nbsp;</span> 5, July 2015</p>
-                                    <p><span>Category:&nbsp;</span> System Development</p>
-                                    <p><span>Client:&nbsp;</span> Mr. John Doe</p>
-                                    <!-- Live Demo Link -->
-                                    <a href="home.html#0" target="_blank" class="btn modal-btn waves-effect waves-light btn-primary custom-btn">Live Demo</a>
-                                    <!-- Some Information Abut the Project -->
-                                    <p class="text-left">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet.
-                                    </p>
-                                    <button data-dismiss="modal" class="btn right modal-btn close-btn waves-effect waves-light btn-primary custom-btn">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ./modal -->
-
-
-                <!-- 3rd Portfolio, Filter Option -->
-                <div class="col col-md-3 col-sm-6 col-xs-12 filtr-item" data-category="1, 4">
-                    <div class="portfolio card">
-                        <figure class="hover-effect">
-                            <!-- Portfolio Imag e-->
-                            <img class="img-responsive" src="images/portfolios/p3.jpg" alt="">
-                            <!-- open-modal ID -->
-                            <a data-toggle="modal" data-target="#modal3" href="home.html#0">
-                                <figcaption><span>View Details</span></figcaption>
-                            </a>
-                        </figure>
-                        <!-- Portfolio Title -->
-                        <h6 class="text-capitalize text-center">Portfolio Title Here</h6>
-                    </div>
-                </div>
-                <!-- ./Portfolio -->
-                <!-- 3rd MODAL -->
-                <div id="modal3" class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content animated zoomIn">
-                            <h3 class="text-capitalize text-left">Project title will be placed here</h3>
-                            <div class="row">
-                                <!-- Modal Image -->
-                                <img class="img-responsive col-md-8 col-sm-12 col-xs-12" src="images/portfolios/p3.jpg" alt="">
-
-                                <!-- Modal Content -->
-                                <div class="content col-md-4 col-sm-12 col-xs-12">
-                                    <!-- Date, Category & Client Name of the Project -->
-                                    <p><span>Date:&nbsp;</span> 5, July 2015</p>
-                                    <p><span>Category:&nbsp;</span> System Development</p>
-                                    <p><span>Client:&nbsp;</span> Mr. John Doe</p>
-                                    <!-- Live Demo Link -->
-                                    <a href="home.html#0" target="_blank" class="btn modal-btn waves-effect waves-light btn-primary custom-btn">Live Demo</a>
-                                    <!-- Some Information Abut the Project -->
-                                    <p class="text-left">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet.
-                                    </p>
-                                    <button data-dismiss="modal" class="btn right modal-btn close-btn waves-effect waves-light btn-primary custom-btn">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ./modal -->
-
-
-                <!-- 4th Portfolio, Filter Option -->
-                <div class="col col-md-3 col-sm-6 col-xs-12 filtr-item" data-category="1, 5">
-                    <div class="portfolio card">
-                        <figure class="hover-effect">
-                            <!-- Portfolio Image -->
-                            <img class="img-responsive" src="images/portfolios/p4.jpg" alt="">
-                            <!-- open-modal ID -->
-                            <a data-toggle="modal" data-target="#modal4" href="home.html#0">
-                                <figcaption><span>View Details</span></figcaption>
-                            </a>
-                        </figure>
-                        <!-- Portfolio Title -->
-                        <h6 class="text-capitalize text-center">Portfolio Title Here</h6>
-                    </div>
-                </div>
-                <!-- ./Portfolio -->
-                <!-- 4th MODAL -->
-                <div id="modal4" class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content animated zoomIn">
-                            <h3 class="text-capitalize text-left">Project title will be placed here</h3>
-                            <div class="row">
-                                <!-- Modal Image -->
-                                <img class="img-responsive col-md-8 col-sm-12 col-xs-12" src="images/portfolios/p4.jpg" alt="">
-
-                                <!-- Modal Content -->
-                                <div class="content col-md-4 col-sm-12 col-xs-12">
-                                    <!-- Date, Category & Client Name of the Project -->
-                                    <p><span>Date:&nbsp;</span> 5, July 2015</p>
-                                    <p><span>Category:&nbsp;</span> System Development</p>
-                                    <p><span>Client:&nbsp;</span> Mr. John Doe</p>
-                                    <!-- Live Demo Link -->
-                                    <a href="home.html#0" target="_blank" class="btn modal-btn waves-effect waves-light btn-primary custom-btn">Live Demo</a>
-                                    <!-- Some Information Abut the Project -->
-                                    <p class="text-left">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet.
-                                    </p>
-                                    <button data-dismiss="modal" class="btn right modal-btn close-btn waves-effect waves-light btn-primary custom-btn">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ./modal -->
-
-
-                <!-- 5th Portfolio, Filter Option -->
-                <div class="col col-md-3 col-sm-6 col-xs-12 filtr-item" data-category="2, 3, 4">
-                    <div class="portfolio card">
-                        <figure class="hover-effect">
-                            <!-- Portfolio Image -->
-                            <img class="img-responsive" src="images/portfolios/p5.jpg" alt="">
-                            <!-- open-modal ID -->
-                            <a data-toggle="modal" data-target="#modal5" href="home.html#0">
-                                <figcaption><span>View Details</span></figcaption>
-                            </a>
-                        </figure>
-                        <!-- Portfolio Title -->
-                        <h6 class="text-capitalize text-center">Portfolio Title Here</h6>
-                    </div>
-                </div>
-                <!-- ./Portfolio -->
-                <!-- 5th MODAL -->
-                <div id="modal5" class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content animated zoomIn">
-                            <h3 class="text-capitalize text-left">Project title will be placed here</h3>
-                            <div class="row">
-                                <!-- Modal Image -->
-                                <img class="img-responsive col-md-8 col-sm-12 col-xs-12" src="images/portfolios/p5.jpg" alt="">
-
-                                <!-- Modal Content -->
-                                <div class="content col-md-4 col-sm-12 col-xs-12">
-                                    <!-- Date, Category & Client Name of the Project -->
-                                    <p><span>Date:&nbsp;</span> 5, July 2015</p>
-                                    <p><span>Category:&nbsp;</span> System Development</p>
-                                    <p><span>Client:&nbsp;</span> Mr. John Doe</p>
-                                    <!-- Live Demo Link -->
-                                    <a href="home.html#0" target="_blank" class="btn modal-btn waves-effect waves-light btn-primary custom-btn">Live Demo</a>
-                                    <!-- Some Information Abut the Project -->
-                                    <p class="text-left">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet.
-                                    </p>
-                                    <button data-dismiss="modal" class="btn right modal-btn close-btn waves-effect waves-light btn-primary custom-btn">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ./modal -->
-
-
-                <!-- 6th Portfolio, Filter Option -->
-                <div class="col col-md-3 col-sm-6 col-xs-12 filtr-item" data-category="2">
-                    <div class="portfolio card">
-                        <figure class="hover-effect">
-                            <!-- Portfolio Image -->
-                            <img class="img-responsive" src="images/portfolios/p6.jpg" alt="">
-                            <!-- open-modal ID -->
-                            <a data-toggle="modal" data-target="#modal6" href="home.html#0">
-                                <figcaption><span>View Details</span></figcaption>
-                            </a>
-                        </figure>
-                        <!-- Portfolio Title -->
-                        <h6 class="text-capitalize text-center">Portfolio Title Here</h6>
-                    </div>
-                </div>
-                <!-- ./Portfolio -->
-                <!-- 6th MODAL -->
-                <div id="modal6" class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content animated zoomIn">
-                            <h3 class="text-capitalize text-left">Project title will be placed here</h3>
-                            <div class="row">
-                                <!-- Modal Image -->
-                                <img class="img-responsive col-md-8 col-sm-12 col-xs-12" src="images/portfolios/p6.jpg" alt="">
-
-                                <!-- Modal Content -->
-                                <div class="content col-md-4 col-sm-12 col-xs-12">
-                                    <!-- Date, Category & Client Name of the Project -->
-                                    <p><span>Date:&nbsp;</span> 5, July 2015</p>
-                                    <p><span>Category:&nbsp;</span> System Development</p>
-                                    <p><span>Client:&nbsp;</span> Mr. John Doe</p>
-                                    <!-- Live Demo Link -->
-                                    <a href="home.html#0" target="_blank" class="btn modal-btn waves-effect waves-light btn-primary custom-btn">Live Demo</a>
-                                    <!-- Some Information Abut the Project -->
-                                    <p class="text-left">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet.
-                                    </p>
-                                    <button data-dismiss="modal" class="btn right modal-btn close-btn waves-effect waves-light btn-primary custom-btn">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ./modal -->
-
-
-                <!-- 7th Portfolio, Filter Option -->
-                <div class="col col-md-3 col-sm-6 col-xs-12 filtr-item" data-category="5">
-                    <div class="portfolio card">
-                        <figure class="hover-effect">
-                            <!-- Portfolio Image -->
-                            <img class="img-responsive" src="images/portfolios/p7.jpg" alt="">
-                            <!-- open-modal ID -->
-                            <a data-toggle="modal" data-target="#modal7" href="home.html#0">
-                                <figcaption><span>View Details</span></figcaption>
-                            </a>
-                        </figure>
-                        <!-- Portfolio Title -->
-                        <h6 class="text-capitalize text-center">Portfolio Title Here</h6>
-                    </div>
-                </div>
-                <!-- ./Portfolio -->
-                <!-- 7th MODAL -->
-                <div id="modal7" class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content animated zoomIn">
-                            <h3 class="text-capitalize text-left">Project title will be placed here</h3>
-                            <div class="row">
-                                <!-- Modal Image -->
-                                <img class="img-responsive col-md-8 col-sm-12 col-xs-12" src="images/portfolios/p7.jpg" alt="">
-
-                                <!-- Modal Content -->
-                                <div class="content col-md-4 col-sm-12 col-xs-12">
-                                    <!-- Date, Category & Client Name of the Project -->
-                                    <p><span>Date:&nbsp;</span> 5, July 2015</p>
-                                    <p><span>Category:&nbsp;</span> System Development</p>
-                                    <p><span>Client:&nbsp;</span> Mr. John Doe</p>
-                                    <!-- Live Demo Link -->
-                                    <a href="home.html#0" target="_blank" class="btn modal-btn waves-effect waves-light btn-primary custom-btn">Live Demo</a>
-                                    <!-- Some Information Abut the Project -->
-                                    <p class="text-left">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet.
-                                    </p>
-                                    <button data-dismiss="modal" class="btn right modal-btn close-btn waves-effect waves-light btn-primary custom-btn">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ./modal -->
-
-
-                <!-- 8th Portfolio, Filter Option -->
-                <div class="col col-md-3 col-sm-6 col-xs-12 filtr-item" data-category="2, 3">
-                    <div class="portfolio card">
-                        <figure class="hover-effect">
-                            <!-- Portfolio Image -->
-                            <img class="img-responsive" src="images/portfolios/p8.jpg" alt="">
-                            <!-- open-modal ID -->
-                            <a data-toggle="modal" data-target="#modal8" href="home.html#0">
-                                <figcaption><span>View Details</span></figcaption>
-                            </a>
-                        </figure>
-                        <!-- Portfolio Title -->
-                        <h6 class="text-capitalize text-center">Portfolio Title Here</h6>
-                    </div>
-                </div>
-                <!-- ./Portfolio -->
-                <!-- 8th MODAL -->
-                <div id="modal8" class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content animated zoomIn">
-                            <h3 class="text-capitalize text-left">Project title will be placed here</h3>
-                            <div class="row">
-                                <!-- Modal Image -->
-                                <img class="img-responsive col-md-8 col-sm-12 col-xs-12" src="images/portfolios/p8.jpg" alt="">
-
-                                <!-- Modal Content -->
-                                <div class="content col-md-4 col-sm-12 col-xs-12">
-                                    <!-- Date, Category & Client Name of the Project -->
-                                    <p><span>Date:&nbsp;</span> 5, July 2015</p>
-                                    <p><span>Category:&nbsp;</span> System Development</p>
-                                    <p><span>Client:&nbsp;</span> Mr. John Doe</p>
-                                    <!-- Live Demo Link -->
-                                    <a href="home.html#0" target="_blank" class="btn modal-btn waves-effect waves-light btn-primary custom-btn">Live Demo</a>
-                                    <!-- Some Information Abut the Project -->
-                                    <p class="text-left">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                        venenatis pharetra mi, ut vestibulum elit ultricies. Lorem ipsum dolor sit amet.
-                                    </p>
-                                    <button data-dismiss="modal" class="btn right modal-btn close-btn waves-effect waves-light btn-primary custom-btn">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ./modal -->
-
             </div>
         </div>
     </div>
@@ -1181,23 +663,23 @@
 <section id="publications" class="section">
     <h4 class="text-uppercase text-center">Publications</h4>
     <div class="container">
-        <div class="row">
+        <div class="row" data-bind="foreach: me._user_User_Publications">
 
             <!-- 1st publication -->
             <div class="col col-md-6 col-sm-12 col-xs-12">
                 <div class="publication card text-center">
                     <!-- place Icon Here -->
-                    <div class="icon-div text-center" data-aos="zoom-in" data-aos-delay="300"><i class="ion-ios-book"></i></div>
-                    <h6 class="text-center text-capitalize">Name of the book will be placed here</h6>
+                    <div class="icon-div text-center" data-aos="zoom-in" data-aos-delay="300"><i class="ion-ios-book" data-bind="class: 'ion-ios-' + ($data._publisher?'book':'paper')"></i></div>
+                    <h6 class="text-center text-capitalize" data-bind="text: $data._name">Name of the book will be placed here</h6>
 
                     <!-- Type and Published date here -->
                     <ul class="text-center list-inline">
-                        <li><i class="ion-ios-pricetag"></i>Type: Novel</li>
-                        <li><i class="ion-calendar"></i>Published On: 12 Jun 2015</li>
+                        <li><i class="ion-ios-pricetag"></i><span data-bind="text: $data._type._name">Type: Novel</span></li>
+                        <li><i class="ion-calendar"></i><span data-bind="text: ($data._date.getMonth()+1) + '/' + $data._date.getFullYear()">12 Jun 2015</span></li>
                     </ul>
 
                     <!-- Some Info About Item -->
-                    <p class="text-center">
+                    <p class="text-center" data-bind="html: $data._information">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
                         In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel. Vestibulum
                         venenatis vestibulum elit ultricies.
@@ -1211,94 +693,6 @@
                 </div>
             </div>
             <!-- ./1st publication -->
-
-            <!-- 2nd publication -->
-            <div class="col col-md-6 col-sm-12 col-xs-12">
-                <div class="publication card text-center">
-                    <!-- place Icon Here -->
-                    <div class="icon-div text-center" data-aos="zoom-in" data-aos-delay="300"><i class="ion-ios-paper"></i></div>
-                    <h6 class="text-center text-capitalize">Subject of research will be placed here</h6>
-
-                    <!-- Type and Published date here -->
-                    <ul class="text-center list-inline">
-                        <li><i class="ion-ios-pricetag"></i>Type: Research</li>
-                        <li><i class="ion-calendar"></i>Published On: 12 Jun 2015</li>
-                    </ul>
-
-                    <!-- Some Info About Item -->
-                    <p class="text-center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel. Vestibulum
-                        venenatis vestibulum elit ultricies.
-                    </p>
-
-                    <div class="row">
-                        <!-- Item link here -->
-                        <a href="home.html#0" class="btn waves-effect waves-light btn-primary custom-btn">Read Now</a>
-                    </div>
-
-                </div>
-            </div>
-            <!-- ./2nd publication -->
-
-            <!-- 3rd publication -->
-            <div class="col col-md-6 col-sm-12 col-xs-12">
-                <div class="publication card text-center">
-                    <!-- place Icon Here -->
-                    <div class="icon-div text-center" data-aos="zoom-in" data-aos-delay="300"><i class="ion-ios-book"></i></div>
-                    <h6 class="text-center text-capitalize">Name of the book will be placed here</h6>
-
-                    <!-- Type and Published date here -->
-                    <ul class="text-center list-inline">
-                        <li><i class="ion-ios-pricetag"></i>Type: Novel</li>
-                        <li><i class="ion-calendar"></i>Published On: 12 Jun 2015</li>
-                    </ul>
-
-                    <!-- Some Info About Item -->
-                    <p class="text-center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel. Vestibulum
-                        venenatis vestibulum elit ultricies.
-                    </p>
-
-                    <div class="row">
-                        <!-- Item link here -->
-                        <a href="home.html#0" class="btn waves-effect waves-light btn-primary custom-btn">Read Now</a>
-                    </div>
-
-                </div>
-            </div>
-            <!-- ./3rd publication -->
-
-            <!-- 4th publication -->
-            <div class="col col-md-6 col-sm-12 col-xs-12">
-                <div class="publication card text-center">
-                    <!-- place Icon Here -->
-                    <div class="icon-div text-center" data-aos="zoom-in" data-aos-delay="300"><i class="ion-ios-paper"></i></div>
-                    <h6 class="text-center text-capitalize">Subject of research will be placed here</h6>
-
-                    <!-- Type and Published date here -->
-                    <ul class="text-center list-inline">
-                        <li><i class="ion-ios-pricetag"></i>Type: Research</li>
-                        <li><i class="ion-calendar"></i>Published On: 12 Jun 2015</li>
-                    </ul>
-
-                    <!-- Some Info About Item -->
-                    <p class="text-center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                        In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel. Vestibulum
-                        venenatis vestibulum elit ultricies.
-                    </p>
-
-                    <div class="row">
-                        <!-- Item link here -->
-                        <a href="home.html#0" class="btn waves-effect waves-light btn-primary custom-btn">Read Now</a>
-                    </div>
-
-                </div>
-            </div>
-            <!-- ./4th publication -->
-
         </div>
     </div>
 </section>
@@ -1422,7 +816,7 @@
         <div class="row">
 
             <div id="client-slider" class="swiper-container">
-                <div class="swiper-wrapper">
+                <div class="swiper-wrapper" data-bind="foreach: $.grep(me._user_User_Testimonials, t => t._position)">
 
                     <!-- 1st Reference from Client -->
                     <div class="col col-md-12 col-sm-12 col-xs-12 swiper-slide">
@@ -1430,84 +824,20 @@
 
                             <!-- Client Photo -->
                             <div class="client-photo center-block">
-                                <img class="center-block" src="images/client/face-1.png">
+                                <img class="center-block" src="images/client/face-1.png" data-bind="attr: { src: 'data:image/png;base64,' + $data._image, alt: $data._name}">
                             </div>
 
                             <!-- Client Testimonial -->
                             <blockquote class="text-center">
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
+                                "<span data-bind="html: $data._information">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
                                 In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
                                 venenatis pharetra mi, ut vestibulum elit ultricies a. Vestibulum at mollis ex, ac consectetur
-                                massa. Donec nunc, laoreet a nibh et, semper tincidunt nunc. Donec ac posuere tellus."
-                                <cite>&mdash; Mr. John Mark, CEO </cite>
+                                massa. Donec nunc, laoreet a nibh et, semper tincidunt nunc. Donec ac posuere tellus."</span>
+                                <cite>&mdash; <span data-bind="text: $data._name">Mr. John Mark</span>, <span data-bind="text: $data._position._name">CEO</span> </cite>
                             </blockquote>
                         </div>
                     </div>
                     <!-- ./1st Reference from Client -->
-
-                    <!-- 2nd Reference from Client -->
-                    <div class="col col-md-12 col-sm-12 col-xs-12 swiper-slide">
-                        <div class="card clients-ref">
-
-                            <!-- Client Photo -->
-                            <div class="client-photo center-block">
-                                <img class="center-block" src="images/client/face-2.png">
-                            </div>
-
-                            <!-- Client Testimonial -->
-                            <blockquote class="text-center">
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                venenatis pharetra mi, ut vestibulum elit ultricies a. Vestibulum at mollis ex, ac consectetur
-                                massa. Donec nunc, laoreet a nibh et, semper tincidunt nunc. Donec ac posuere tellus."
-                                <cite>&mdash; Mrs. July Sara, CEO </cite>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <!-- ./2nd Reference from Client -->
-
-                    <!-- 3rd Reference from Client -->
-                    <div class="col col-md-12 col-sm-12 col-xs-12 swiper-slide">
-                        <div class="card clients-ref">
-
-                            <!-- Client Photo -->
-                            <div class="client-photo center-block">
-                                <img class="center-block" src="images/client/face-3.png">
-                            </div>
-
-                            <!-- Client Testimonial -->
-                            <blockquote class="text-center">
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                venenatis pharetra mi, ut vestibulum elit ultricies a. Vestibulum at mollis ex, ac consectetur
-                                massa. Donec nunc, laoreet a nibh et, semper tincidunt nunc. Donec ac posuere tellus."
-                                <cite>&mdash; Mr. Robart Hug, CEO </cite>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <!-- ./3rd Reference from Client -->
-
-                    <!-- 4th Reference from Client -->
-                    <div class="col col-md-12 col-sm-12 col-xs-12 swiper-slide">
-                        <div class="card clients-ref">
-
-                            <!-- Client Photo -->
-                            <div class="client-photo center-block">
-                                <img class="center-block" src="images/client/face-4.png">
-                            </div>
-
-                            <!-- Client Testimonial -->
-                            <blockquote class="text-center">
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
-                                In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin. Vestibulum
-                                venenatis pharetra mi, ut vestibulum elit ultricies a. Vestibulum at mollis ex, ac consectetur
-                                massa. Donec nunc, laoreet a nibh et, semper tincidunt nunc. Donec ac posuere tellus."
-                                <cite>&mdash; Mrs. Angela D-Suza, CEO </cite>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <!-- ./4th Reference from Client -->
-
                 </div>
 
                 <!-- If we need pagination -->
@@ -1520,10 +850,10 @@
             <h5 class="text-uppercase text-center">Also Worked for</h5>
 
             <!-- Company Logo with Website LInk -->
-            <ul class="text-center">
-                <li data-aos="fade-up" data-aos-delay="300"><a href="home.html#0">
-                    <img class="img-responsive media-middle" src="images/client/logo1.png" alt="">
-                </a></li>
+            <ul class="text-center" data-bind="foreach: $.grep(me._user_User_Testimonials, t => !t._position)">
+                <li data-aos="fade-up" data-aos-delay="300"><a href="home.html#0" target="_new" data-bind="attr: {href: 'https://www.google.com/search?q=' + $data._name}">
+                    <img class="img-responsive media-middle" style="width:125px;height:50px" src="images/client/logo1.png" alt="" data-bind="attr: { src: 'data:image/png;base64,' + $data._image, alt: $data._name}">
+                </a></li><!--
                 <li data-aos="fade-up" data-aos-delay="450"><a href="home.html#0">
                     <img class="img-responsive media-middle" src="images/client/logo2.png" alt="">
                 </a></li>
@@ -1535,7 +865,7 @@
                 </a></li>
                 <li data-aos="fade-up" data-aos-delay="750"><a href="home.html#0">
                     <img class="img-responsive media-middle" src="images/client/logo5.png" alt="">
-                </a></li>
+                </a></li>-->
             </ul>
             <!-- ./Company Logo with Website LInk -->
 
@@ -1554,27 +884,30 @@
         <div class="row">
 
             <ul class="text-center period-btn">
-                <li id="month-btn" class="active-cat"><a>Monthly</a></li>
-                <li id="year-btn"><a>Yearly</a></li>
+                <!-- ko foreach: {data: parent.sr.groupBy(me._user_User_Pricings, '_service'), as: 'service'} -->
+                <li id="month-btn" class="active-cat" data-bind="attr: {'id': service.key.Id + '-btn', 'class': !$index()?'active-cat':''}"><a data-bind="text: service.key._name">Monthly</a></li>
+                <!-- /ko -->
             </ul>
 
             <!-- Monthly Pricing -->
-            <div id="month" class="col col-md-12 col-sm-12 col-xs-12 period-type">
+            <!-- ko foreach: {data: parent.sr.groupBy(me._user_User_Pricings, '_service'), as: 'service'} -->
+            <div id="month" class="col col-md-12 col-sm-12 col-xs-12 period-type" data-bind="attr: {id: service.key.Id}">
                 <div class="row">
-
+    
                     <!-- Basic -->
+                    <!-- ko foreach: {data: service.values, as: 'value'} -->
                     <div class="col col-md-3 col-sm-6 col-xs-12">
-                        <div class="card pricing-table" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card pricing-table" data-aos="fade-up" data-aos-delay="300" data-bind="attr: {'data-aos-delay': 300+(150*$index())}">
                             <!-- Table Name -->
-                            <h3 class="text-center">Basic</h3>
+                            <h3 class="text-center" data-bind="text: value._name">Basic</h3>
                             <h4 class="text-center">
-                                <span class="dollar">$</span>
+                                <span class="dollar" data-bind="text: value._currency._symbol">$</span>
                                 <!-- Enter Your Amount Here -->
-                                <span class="amount">25</span>
-                                <span class="period">/mo</span>
+                                <span class="amount" data-bind="text: value._rate">25</span>
+                                <span class="period" data-bind="text: '/' + value._period._abbreviation">/mo</span>
                             </h4>
                             <!-- Features -->
-                            <ul class="feature-list text-center">
+                            <ul class="feature-list text-center" data-bind="html: value._information">
                                 <li>500 Items</li>
                                 <li>25 Free Demo /week</li>
                                 <li>Unlimited Storage</li>
@@ -1583,223 +916,17 @@
                             <!-- ./Features -->
                             <div class="row">
                                 <div class="col col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <a href="home.html#0" class="btn waves-effect waves-light custom-btn">Buy Now</a>
+                                    <a href="home.html#contact" class="btn waves-effect waves-light custom-btn">Buy Now</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- /ko -->
                     <!-- ./Basic -->
-
-                    <!-- Silver -->
-                    <div class="col col-md-3 col-sm-6 col-xs-12">
-                        <div class="card pricing-table" data-aos="fade-up" data-aos-delay="450">
-                            <!-- Table Name -->
-                            <h3 class="text-center">Silver</h3>
-                            <h4 class="text-center">
-                                <span class="dollar">$</span>
-                                <!-- Enter Your Amount Here -->
-                                <span class="amount">50</span>
-                                <span class="period">/mo</span>
-                            </h4>
-                            <!-- Features -->
-                            <ul class="feature-list text-center">
-                                <li>500 Items</li>
-                                <li>25 Free Demo /week</li>
-                                <li>Unlimited Storage</li>
-                                <li>24/7 Support</li>
-                            </ul>
-                            <!-- ./Features -->
-                            <div class="row">
-                                <div class="col col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <a href="home.html#0" class="btn waves-effect waves-light custom-btn">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ./Silver -->
-
-                    <!-- Gold -->
-                    <div class="col col-md-3 col-sm-6 col-xs-12">
-                        <div class="card pricing-table" data-aos="fade-up" data-aos-delay="600">
-                            <!-- Table Name -->
-                            <h3 class="text-center">Gold</h3>
-                            <h4 class="text-center">
-                                <span class="dollar">$</span>
-                                <!-- Enter Your Amount Here -->
-                                <span class="amount">75</span>
-                                <span class="period">/mo</span>
-                            </h4>
-                            <!-- Features -->
-                            <ul class="feature-list text-center">
-                                <li>500 Items</li>
-                                <li>25 Free Demo /week</li>
-                                <li>Unlimited Storage</li>
-                                <li>24/7 Support</li>
-                            </ul>
-                            <!-- ./Features -->
-                            <div class="row">
-                                <div class="col col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <a href="home.html#0" class="btn waves-effect waves-light custom-btn">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ./Gold -->
-
-                    <!-- Platinum -->
-                    <div class="col col-md-3 col-sm-6 col-xs-12">
-                        <div class="card pricing-table" data-aos="fade-up" data-aos-delay="750">
-                            <!-- Table Name -->
-                            <h3 class="text-center">Platinum</h3>
-                            <h4 class="text-center">
-                                <span class="dollar">$</span>
-                                <!-- Enter Your Amount Here -->
-                                <span class="amount">100</span>
-                                <span class="period">/mo</span>
-                            </h4>
-                            <!-- Features -->
-                            <ul class="feature-list text-center">
-                                <li>500 Items</li>
-                                <li>25 Free Demo /week</li>
-                                <li>Unlimited Storage</li>
-                                <li>24/7 Support</li>
-                            </ul>
-                            <!-- ./Features -->
-                            <div class="row">
-                                <div class="col col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <a href="home.html#0" class="btn waves-effect waves-light custom-btn">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ./Platinum -->
-
                 </div>
             </div>
+            <!-- /ko -->
             <!-- ./Monthly Pricing -->
-
-
-
-            <!-- Yearly Pricing -->
-            <div id="year" class="col col-md-12 col-sm-12 col-xs-12 period-type">
-                <div class="row">
-
-                    <!-- Basic -->
-                    <div class="col col-md-3 col-sm-6 col-xs-12">
-                        <div class="card pricing-table">
-                            <!-- Table Name -->
-                            <h3 class="text-center">Basic</h3>
-                            <h4 class="text-center">
-                                <span class="dollar">$</span>
-                                <!-- Enter Your Amount Here -->
-                                <span class="amount">240</span>
-                                <span class="period">/yr</span>
-                            </h4>
-                            <!-- Features -->
-                            <ul class="feature-list text-center">
-                                <li>500 Items</li>
-                                <li>25 Free Demo /week</li>
-                                <li>Unlimited Storage</li>
-                                <li>24/7 Support</li>
-                            </ul>
-                            <!-- ./Features -->
-                            <div class="row">
-                                <div class="col col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <a href="home.html#0" class="btn waves-effect waves-light custom-btn">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ./Basic -->
-
-                    <!-- Silver -->
-                    <div class="col col-md-3 col-sm-6 col-xs-12">
-                        <div class="card pricing-table">
-                            <!-- Table Name -->
-                            <h3 class="text-center">Silver</h3>
-                            <h4 class="text-center">
-                                <span class="dollar">$</span>
-                                <!-- Enter Your Amount Here -->
-                                <span class="amount">480</span>
-                                <span class="period">/yr</span>
-                            </h4>
-                            <!-- Features -->
-                            <ul class="feature-list text-center">
-                                <li>500 Items</li>
-                                <li>25 Free Demo /week</li>
-                                <li>Unlimited Storage</li>
-                                <li>24/7 Support</li>
-                            </ul>
-                            <!-- ./Features -->
-                            <div class="row">
-                                <div class="col col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <a href="home.html#0" class="btn waves-effect waves-light custom-btn">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ./Silver -->
-
-                    <!-- Gold -->
-                    <div class="col col-md-3 col-sm-6 col-xs-12">
-                        <div class="card pricing-table">
-                            <!-- Table Name -->
-                            <h3 class="text-center">Gold</h3>
-                            <h4 class="text-center">
-                                <span class="dollar">$</span>
-                                <!-- Enter Your Amount Here -->
-                                <span class="amount">720</span>
-                                <span class="period">/yr</span>
-                            </h4>
-                            <!-- Features -->
-                            <ul class="feature-list text-center">
-                                <li>500 Items</li>
-                                <li>25 Free Demo /week</li>
-                                <li>Unlimited Storage</li>
-                                <li>24/7 Support</li>
-                            </ul>
-                            <!-- ./Features -->
-                            <div class="row">
-                                <div class="col col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <a href="home.html#0" class="btn waves-effect waves-light custom-btn">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ./Gold -->
-
-                    <!-- Platinum -->
-                    <div class="col col-md-3 col-sm-6 col-xs-12">
-                        <div class="card pricing-table">
-                            <!-- Table Name -->
-                            <h3 class="text-center">Platinum</h3>
-                            <h4 class="text-center">
-                                <span class="dollar">$</span>
-                                <!-- Enter Your Amount Here -->
-                                <span class="amount">960</span>
-                                <span class="period">/yr</span>
-                            </h4>
-                            <!-- Features -->
-                            <ul class="feature-list text-center">
-                                <li>500 Items</li>
-                                <li>25 Free Demo /week</li>
-                                <li>Unlimited Storage</li>
-                                <li>24/7 Support</li>
-                            </ul>
-                            <!-- ./Features -->
-                            <div class="row">
-                                <div class="col col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <a href="home.html#0" class="btn waves-effect waves-light custom-btn">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ./Platinum -->
-
-                </div>
-            </div>
-            <!-- Yearly Pricing -->
-
         </div>
     </div>
 </section>
@@ -1817,7 +944,7 @@
                         <div class="col col-md-12 col-sm-12 col-xs-12">
 
                             <!-- Some brief about your interest -->
-                            <p class="text-center">
+                            <p class="text-center" data-bind="text: ''">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt.
                                 In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel sollicitudin.
                                 Vestibulum venenatis pharetrami. Lorem ipsum dolor sit amet.
@@ -1825,37 +952,12 @@
                         </div>
 
                         <!-- Interest Topic Icon and Name -->
-                        <ul class="col-md-12 col-sm-12 col-xs-12 text-center list-inline">
+                        <ul class="col-md-12 col-sm-12 col-xs-12 text-center list-inline" data-bind="foreach: me._user_User_Interests">
                             <li class="interest-topic">
-                                <i class="ion-ios-film"></i>
-                                <span>Documentary</span>
-                            </li>
-                            <li class="interest-topic">
-                                <i class="ion-compose"></i>
-                                <span>Blogging</span>
-                            </li>
-                            <li class="interest-topic">
-                                <i class="ion-headphone"></i>
-                                <span>Music</span>
-                            </li>
-                            <li class="interest-topic">
-                                <i class="ion-ios-football"></i>
-                                <span>Football</span>
+                                <i class="ion-ios-film" data-bind="attr: {class: 'ion-' + {travel: 'plane', bicycling: 'bicycle', shopping: 'pricetags', cooking: 'ios-restaurant', movies: 'ios-videocam', music: 'headphone', gaming: 'ios-game-controller-b'}[$data._interest._code]}"></i>
+                                <span data-bind="text: $data._interest._name">Documentary</span>
                             </li>
 
-                            <li class="interest-topic">
-                                <i class="ion-plane"></i>
-                                <span>Traveling</span>
-                            </li>
-
-                            <li class="interest-topic">
-                                <i class="ion-ios-game-controller-b"></i>
-                                <span>Gaming</span>
-                            </li>
-                            <li class="interest-topic">
-                                <i class="ion-ios-camera"></i>
-                                <span>Photography</span>
-                            </li>
                         </ul>
                         <!-- ./Interest Topic Icon and Name -->
                     </div>
@@ -1881,23 +983,23 @@
                     <ul class="text-center center-block" data-aos="fade" data-aos-delay="200" data-aos-offset="0">
                         <li>
                             <i class="ion-android-call center-block"></i>
-                            <span data-bind="text: _phone">+880 - 12345 - 67890</span>
+                            <span data-bind="text: me._phone">+880 - 12345 - 67890</span>
                         </li>
                         <li>
                             <i class="ion-ios-printer center-block"></i>
-                            <span data-bind="text: _phone">+880 - 12345 - 67890</span>
+                            <span data-bind="text: me._phone">+880 - 12345 - 67890</span>
                         </li>
                         <li>
                             <i class="ion-email center-block"></i>
-                            <span data-bind="text: _email">emailid@domain.com</span>
+                            <span data-bind="text: me._email">emailid@domain.com</span>
                         </li>
                         <li>
                             <i class="ion-earth center-block"></i>
-                            <span data-bind="text: _website">websiteaddresslink.com</span>
+                            <span data-bind="text: me._website">websiteaddresslink.com</span>
                         </li>
                         <li>
                             <i class="ion-ios-location center-block"></i>
-                            <span data-bind="text: _address">25/A New Eskaton Road, Maghbazar</span>
+                            <span data-bind="text: me._address">25/A New Eskaton Road, Maghbazar</span>
                         </li>
                     </ul>
 
@@ -1908,7 +1010,6 @@
             <!-- Contact Form -->
             <div class="col col-md-7 col-sm-6 col-xs-12">
                 <div  class="contact card">
-
                     <form id="contact-form" name="contact-form" role="form">
                         <div class="input-field">
                             <input  id="name" name="name" type="text" class="validate" required>
@@ -1953,7 +1054,7 @@
                     <div id="cd-zoom-in" class="custom-btn"><i class="material-icons text-center">add</i></div>
                     <div id="cd-zoom-out" class="custom-btn"><i class="material-icons text-center">remove</i></div>
                     <!-- Your address here -->
-                    <address class="text-center">25/A New Eskaton Road, Maghbazar, Dhaka 1000, Bangladesh</address>
+                    <address class="text-center" data-bind="text: me._address">25/A New Eskaton Road, Maghbazar, Dhaka 1000, Bangladesh</address>
                 </div>
             </div>
         </div>
@@ -1966,9 +1067,9 @@
 <footer>
     <div class="container">
         <p class="text-center">
-            © DECENT Material CV | Resume 2016. Designed by
-            <a href="https://themeforest.net/user/ravelweb" target="_blank">
-                <strong>Mohammad Asif | Ravelweb</strong>
+            © Resume Managmenet System
+            <a href="https://www.nammour.com/resume" target="_blank">
+                <strong>Nammour.com</strong>
             </a>
         </p>
     </div>
@@ -2014,7 +1115,7 @@
 <!-- ================== SCRIPTS ================== -->
 <script src="javascript/jquery-2.1.3.min.js"></script>
 <script src="javascript/aos.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO3E4rPKVUYhCVRaKgLFbtCca2AF-za04"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=" data-bind="attr: {src: 'https://maps.googleapis.com/maps/api/js?key=' + parent.me._template._Maps_Key}"></script>
 <script src="javascript/custom-map.js"></script>
 <script src="javascript/bootstrap.min.js"></script>
 <script src="javascript/materialize.min.js"></script>

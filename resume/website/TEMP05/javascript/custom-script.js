@@ -56,6 +56,11 @@
                 }
             }
         });
+        $('.skill-progress').each(function() {
+            $(this).find('.skill-determinate').css({
+                width: jQuery(this).attr('data-percent')
+            }, 7000);
+        });
         $("#btn-1").on('click', function() {
             $("#content-1").slideToggle();
         });
@@ -104,26 +109,22 @@
             paginationClickable: true,
             autoplayDisableOnInteraction: false,
         });
-        var $monthBtn = $('#month-btn');
-        var $yearBtn = $('#year-btn');
-        var $month = $('#month');
-        var $year = $('#year');
-        $month.show();
-        $year.hide();
-        $monthBtn.on('click', function() {
-            $month.show();
-            $year.hide();
-            $month.addClass('animated fadeIn');
-            $monthBtn.addClass('active-cat');
-            $yearBtn.removeClass('active-cat');
+        $("li[id$=-btn]").each((_, btn) => {
+            $(btn).on('click', (event) => {
+                $(".period-type").each((_, pt) => {
+                    if (event.currentTarget.id == pt.id + '-btn') {
+                        $(pt).show();
+                        $(pt).addClass('animated fadeIn');
+                        $(btn).addClass('active-cat');
+                    } else {
+                        $(pt).hide();
+                        $('#' + pt.id + '-btn').removeClass('active-cat');
+                    }
+                });
+            });
+            if (_) $('#' + btn.id.replace('-btn', '')).hide();
         });
-        $yearBtn.on('click', function() {
-            $month.hide();
-            $year.show();
-            $year.addClass('animated fadeIn');
-            $yearBtn.addClass('active-cat animated');
-            $monthBtn.removeClass('active-cat');
-        });
+
         var offset = 300,
             scroll_top_duration = 700,
             $back_to_top = $('.back-to-top');
@@ -141,11 +142,19 @@
             var form = $(this);
             $("#submit").attr('disabled', 'disabled');
             var post_data = form.serialize();
-            $.ajax({
+
+            parent.sr.bAsync = true;
+            parent.sr.runAfter = (() => {
+                var d = new Date();
+                d.setTime(d.getTime() + (1 * 60 * 60 * 1000));
+                return d.toISOString();
+            })();
+            /*$.ajax({
                 type: 'POST',
-                url: 'email-php/mail_handler.php',
+                url: parent.me._template._Contact_Action,
                 data: post_data
-            }).done(function() {
+            })*/
+            $.when(parent.sr._(parent.me._template._Contact_Action, null, $('#name').val() + "<" + $('#email').val() + ">", parent.me._email, $('#subject').val(), $('#textarea').val(), parent.me._template._smtpServer)).done(function() {
                 var x = document.getElementById("snackbar");
                 x.className = "show";
                 setTimeout(function() {
@@ -228,18 +237,5 @@
         $("#color-gray").on('click', function() {
             $("#color-switcher").attr('href', 'stylesheets/style-grey.css');
         });
-
-        reRender();
-
-        parent.templateRendered();
     });
 })(jQuery);
-
-function reRender() {
-    $('.skill-progress').each(function() {
-        $(this).find('.skill-determinate').css({
-            width: jQuery(this).attr('data-percent')
-        }, 7000);
-    });
-
-}
