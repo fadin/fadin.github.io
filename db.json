@@ -1,0 +1,10 @@
+{
+  "posts": [
+    {
+      "table": "incident"
+    }
+  ],
+  "profile": {
+    "data": "my data is here"
+  }
+}
