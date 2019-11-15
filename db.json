@@ -1,10 +1,11 @@
 {
   "posts": [
     {
+      "id": "1",
       "table": "incident"
     }
   ],
   "profile": {
-    "data": "my data is here"
+    "name": "JSONServiceFADIN"
   }
 }
