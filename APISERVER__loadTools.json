@@ -1,0 +1,17 @@
+[{
+    type: {
+        name: "SqlDB",
+    },
+    tool_Configs: [{
+  		name: "database",
+    }, {
+        name: "create",
+        value: 3,
+    }, {
+        name: "type",
+        value: "sqlite",
+    }, {
+        name: "SyncAttributes",
+        value: true,
+    }]
+}]
