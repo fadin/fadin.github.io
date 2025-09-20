@@ -1,0 +1,9 @@
+{
+	"Id": "01996858f1b57641aa5128e6b8dce7de",
+	"name": "shs_arbfw-Company",
+	"script": "d2luZG93LmNvbXBhbnkgPSB7DQoJIkNvZGUiOiAiZW1zIiwNCgkiU2NvcGUiOiAiZW1zd2ViIiwNCgkiUmVzcG9uc2l2ZSI6IHRydWUsDQoJIlJlcXVpcmVkIjogWyJEeW5hRm9ybSIsICJTUUxKUyIsICJFeGNlbEpTIiwgImZhc3RYTUwiLCAiTVFUVCIsICJTdG9tcCIsICJKU09OUGF0aCIsICJQbGFudFVNTCJdLA0KCSJOYW1lIjogIkVudGVycHJpc2UgTWFuYWdlbWVudCBTeXN0ZW0iLA0KCSJsaWJyYXJ5IjogIkVudGVycHJpc2VNYW5hZ2VyIg0KfQ==",
+	"__keys": ["name"],
+	"active": true,
+	"enabled": true,
+	"__trMap": []
+}
