@@ -6,7 +6,7 @@
 
 </head>
 
-<body onload='Promise.all(["./script/FrEMD.js", "/nammour.com/ems/script/FrEMD.js", "./com/nammour/cms/StoredScript/FrEMD.json"].map(url => fetch(url).then(r => r.ok?r.text():null))).then(arScripts => arScripts.forEach(s => {let sTag = document.createElement("script"); try{s = atob(JSON.parse(s).remark); console.log(s);}catch(ex){} sTag.textContent=s; document.body.appendChild(sTag);})).then(() => new FrEMD().init())'>
+<body onload='Promise.all(["./script/FrEMD.js", "/nammour.com/ems/script/FrEMD.js", "./com/nammour/cms/StoredScript/FrEMD.json"].map(url => fetch(url).then(r => r.ok?r.text():null))).then(arScripts => arScripts.forEach(s => {let sTag = document.createElement("script"); try{s = atob(JSON.parse(s).remark); console.log(s);}catch(ex){console.log(ex);} sTag.textContent=s; document.body.appendChild(sTag);})).then(() => new FrEMD().init())'>
 </body>
 
 </html>
