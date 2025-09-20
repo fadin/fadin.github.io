@@ -1,9 +1,0 @@
-{
-	"Id": "0199683fd05672928117d57c0f5fd574",
-	"name": "cms-Company",
-	"script": "d2luZG93LmNvbXBhbnkgPSB7DQoJIkNvZGUiOiAiY21zIiwNCgkiU2NvcGUiOiAiY21zd2ViIiwNCgkiU2NoZW1hIjogIkNNUyBXZWIiLA0KCSJSZXNwb25zaXZlIjogdHJ1ZSwNCgkiUmVxdWlyZWQiOiBbIkR5bmFGb3JtIiwgIlZ1ZUpTIiwgIlNRTEpTIiwgIkV4Y2VsSlMiLCAiZmFzdFhNTCJdLA0KCSJOYW1lIjogIkNvbnRlbnQgTWFuYWdlbWVudCBTeXN0ZW0iLA0KCSJsaWJyYXJ5IjogIkNvbnRlbnRNYW5hZ2VyIg0KfQ0K",
-	"__keys": ["name"],
-	"active": true,
-	"enabled": true,
-	"__trMap": []
-}
