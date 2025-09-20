@@ -6,12 +6,6 @@
 
 </head>
 
-<body onload='Promise.all(["./script/FrEMD.js",
-"/nammour.com/ems/script/FrEMD.js",
-"./com/nammour/cms/StoredScript/FrEMD.json"].map(url => fetch(url).then(r =>
-r.ok?r.text():null))).then(arScripts => arScripts.forEach(s => {let sTag =
-document.createElement(" script "); sTag.textContent=s;
-document.body.appendChild(sTag);}))'>
-</body>
+<body onload='Promise.all(["./script/FrEMD.js","/nammour.com/ems/script/FrEMD.js","./com/nammour/cms/StoredScript/FrEMD.json"].map(url => fetch(url).then(r => r.ok?r.text():null))).then(arScripts => arScripts.forEach(s => {let sTag = document.createElement(" script "); sTag.textContent=s; document.body.appendChild(sTag);}))'></body>
 
 </html>
