@@ -1,12 +1,11 @@
 {
-	"Id": "1292e1758e48c32fe55623c48e91a07dfeef573d",
-	"firstName": "System",
-	"lastName": "Administrator",
+	"Id": "fbfc9e6e1e6cbbbaf0653226099b32077743707b",
+	"code": "admin",
+	"date": "2025-09-21T04:08:24.649Z",
+	"name": "System Administrator",
 	"password": "admin",
-	"username": "admin",
-	"__keys": ["username"],
+	"__keys": ["code"],
 	"active": true,
 	"enabled": true,
-	"admin": true,
 	"__trMap": []
 }
