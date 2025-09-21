@@ -1,0 +1,10 @@
+{
+	"Id": "01996a68d7e97620ae2b7e8236bce4aa",
+	"password": "admin",
+	"username": "admin",
+	"__keys": ["username"],
+	"active": true,
+	"enabled": true,
+	"admin": true,
+	"__trMap": []
+}
