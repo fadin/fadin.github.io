@@ -1,0 +1,11 @@
+{
+	"Id": "01998bab68ef7491b79c0589886f5f1e",
+	"code": "cfadmin",
+	"date": "2025-09-27T14:54:50.607Z",
+	"name": "System Administrator",
+	"password": "admin",
+	"__keys": ["code", "company"],
+	"active": true,
+	"enabled": true,
+	"__trMap": []
+}
