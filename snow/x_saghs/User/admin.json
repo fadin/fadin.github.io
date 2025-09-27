@@ -1,0 +1,11 @@
+{
+	"Id": "01998aa61ec4723ca9c14f8fb001ad93",
+	"code": "admin",
+	"date": "2025-09-27T10:09:26.724Z",
+	"name": "System Administrator",
+	"password": "admin",
+	"__keys": ["code"],
+	"active": true,
+	"enabled": true,
+	"__trMap": []
+}
