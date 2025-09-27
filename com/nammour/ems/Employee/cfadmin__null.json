@@ -1,7 +1,7 @@
 {
-	"Id": "01998bab68ef7491b79c0589886f5f1e",
+	"Id": "f31f6f66edcb7aabbe60c7592b6dfba2b2322e47",
 	"code": "cfadmin",
-	"date": "2025-09-27T14:54:50.607Z",
+	"date": "2025-09-27T14:55:38.236Z",
 	"name": "System Administrator",
 	"password": "admin",
 	"__keys": ["code", "company"],
