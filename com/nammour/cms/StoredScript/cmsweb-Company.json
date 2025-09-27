@@ -1,0 +1,9 @@
+{
+	"Id": "01998b55916b750c8be956d85e2b857c",
+	"name": "cmsweb-Company",
+	"script": "d2luZG93LmNvbXBhbnkgPSB7DQoJIkNvZGUiOiAiY21zIiwNCgkiU2NvcGUiOiAiY21zd2ViIiwNCgkiU2NoZW1hIjogIkNNUyBXZWIiLA0KCSJSZXNwb25zaXZlIjogdHJ1ZSwNCgkiUmVxdWlyZWQiOiBbIlZ1ZUpTIiwgImZhc3RYTUwiXSwNCgkiTmFtZSI6ICJDb250ZW50IE1hbmFnZW1lbnQgU3lzdGVtIiwNCgkibGlicmFyeSI6ICJDb250ZW50TWFuYWdlciINCn0=",
+	"__keys": ["name"],
+	"active": true,
+	"enabled": true,
+	"__trMap": []
+}
