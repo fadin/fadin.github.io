@@ -1,9 +1,0 @@
-{
-	"Id": "b14d90281904f76e984381dbba5f2c2c40e051d7",
-	"name": "emsweb-Company",
-	"script": "d2luZG93LmNvbXBhbnkgPSB7DQoJIkNvZGUiOiAiZW1zIiwNCgkiU2NvcGUiOiAiZW1zd2ViIiwNCgkiUmVzcG9uc2l2ZSI6IHRydWUsDQoJIlJlcXVpcmVkIjogWyJmYXN0WE1MIiwgIk1RVFQiLCAiU3RvbXAiLCAiSlNPTlBhdGgiLCAiUGxhbnRVTUwiXSwNCgkiTmFtZSI6ICJFbnRlcnByaXNlIE1hbmFnZW1lbnQgU3lzdGVtIiwNCgkibGlicmFyeSI6ICJFbnRlcnByaXNlTWFuYWdlciINCn0=",
-	"__keys": ["name"],
-	"active": true,
-	"enabled": true,
-	"__trMap": []
-}
