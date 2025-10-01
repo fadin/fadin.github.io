@@ -1,0 +1,25 @@
+{
+	"Id": "0199a0e0ed9b75b9a87499936e65d904",
+	"code": "SLOB0001",
+	"date": "2025-10-01T17:45:19.515Z",
+	"name": "title",
+	"template": {
+		"__keys": ["code"],
+		"Id": "0199a0e0ef1f72dfb8d4d34fdd50850a",
+		"__reused": 2
+	},
+	"type": {
+		"__keys": ["code"],
+		"Id": "0199a0e0faac717a8890cd97627fd363",
+		"__reused": 2,
+		"code": "txtbox"
+	},
+	"__keys": ["code"],
+	"active": true,
+	"enabled": true,
+	"x": 10,
+	"y": 10,
+	"width": 30,
+	"height": 30,
+	"__trMap": []
+}
