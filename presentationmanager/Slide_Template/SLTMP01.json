@@ -1,9 +1,6 @@
 {
-	"Id": "205895d2aee9e9f58f6b36bea90f84d92846b562",
-	"code": "SLTMP01",
-	"date": "2025-10-01T19:33:51.619Z",
 	"__keys": ["code"],
-	"active": true,
-	"enabled": true,
-	"__trMap": []
+	"Id": "3db7fef2df7179d0ec0000f87111aed8099407bc",
+	"__reused": 2,
+	"code": "SLTMP01"
 }
