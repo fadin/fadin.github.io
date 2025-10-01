@@ -21,6 +21,8 @@
 	"__keys": ["code"],
 	"active": true,
 	"enabled": true,
+	"x": 315,
+	"y": 250,
 	"width": 200,
 	"height": 50,
 	"__trMap": []
