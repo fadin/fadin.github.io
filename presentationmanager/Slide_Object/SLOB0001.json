@@ -3,8 +3,8 @@
 	"code": "SLOB0001",
 	"date": "2025-10-01T19:15:55.341Z",
 	"name": "title",
-	"font": "30px Arial",
-	"fillStyle": "yellow",
+	"font": "15px Calibri",
+	"fillStyle": "black",
 	"textAlign": "center",
 	"template": {
 		"__keys": ["code"],
@@ -21,8 +21,8 @@
 	"__keys": ["code"],
 	"active": true,
 	"enabled": true,
-	"x": 10,
-	"y": 10,
+	"x": 415,
+	"y": 50,
 	"width": 30,
 	"height": 30,
 	"__trMap": []
