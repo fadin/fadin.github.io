@@ -1,20 +1,20 @@
 {
-	"Id": "0199a1438b42763d85e28a0372887598",
+	"Id": "b99d65f39d27655248a692d86cac80c030b05d66",
 	"code": "SLOB0007",
-	"date": "2025-10-01T19:33:02.403Z",
+	"date": "2025-10-01T19:33:50.771Z",
 	"name": "note3",
 	"font": "bold 30pt Calibri",
 	"fillStyle": "#393939",
 	"textAlign": "center",
 	"template": {
 		"__keys": ["code"],
-		"Id": "00cef3a75e09a8379e7cfb716996eb410424b29e",
+		"Id": "205895d2aee9e9f58f6b36bea90f84d92846b562",
 		"__reused": 2,
 		"code": "SLTMP01"
 	},
 	"type": {
 		"__keys": ["code"],
-		"Id": "b69ed973fd1050ac333439edd659487199889897",
+		"Id": "4b2c0fae66a30eabd8370086f1f7d2c529dca6c8",
 		"__reused": 2,
 		"code": "txtbox"
 	},
