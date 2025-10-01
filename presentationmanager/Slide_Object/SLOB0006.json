@@ -3,7 +3,7 @@
 	"code": "SLOB0006",
 	"date": "2025-10-01T19:32:50.834Z",
 	"name": "note2",
-	"font": "bold 30pt Calibri",
+	"font": "20pt Calibri",
 	"fillStyle": "#393939",
 	"textAlign": "center",
 	"template": {
@@ -21,6 +21,8 @@
 	"__keys": ["code"],
 	"active": true,
 	"enabled": true,
+	"x": 315,
+	"y": 300,
 	"width": 200,
 	"height": 50,
 	"__trMap": []
