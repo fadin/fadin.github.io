@@ -1,0 +1,10 @@
+{
+	"Id": "0199a0e0faac717a8890cd97627fd363",
+	"code": "txtbox",
+	"date": "2025-10-01T17:45:22.860Z",
+	"name": "TextBox",
+	"__keys": ["code"],
+	"active": true,
+	"enabled": true,
+	"__trMap": []
+}
