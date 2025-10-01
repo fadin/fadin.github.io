@@ -1,0 +1,27 @@
+{
+	"Id": "0199a14251af73f9878fd11510a1fa40",
+	"code": "SLOB0002",
+	"date": "2025-10-01T19:31:42.128Z",
+	"name": "note1 title",
+	"font": "bold 30pt Calibri",
+	"fillStyle": "#393939",
+	"textAlign": "center",
+	"template": {
+		"__keys": ["code"],
+		"Id": "cdae98dff531c75a836d0861763ca9137c391a89",
+		"__reused": 2,
+		"code": "SLTMP01"
+	},
+	"type": {
+		"__keys": ["code"],
+		"Id": "e6839ff72220d35061aa0183b713fec977366551",
+		"__reused": 2,
+		"code": "txtbox"
+	},
+	"__keys": ["code"],
+	"active": true,
+	"enabled": true,
+	"width": 200,
+	"height": 50,
+	"__trMap": []
+}
