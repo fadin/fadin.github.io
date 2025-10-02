@@ -3,7 +3,9 @@
 	"code": "SLOB0002",
 	"date": "2025-10-01T19:31:42.128Z",
 	"name": "note1 title",
-	"font": "20pt Calibri",
+	"font": "Calibri",
+	"fontSize": "20",
+	"bold": true,
 	"fillStyle": "white",
 	"textAlign": "center",
 	"template": {
