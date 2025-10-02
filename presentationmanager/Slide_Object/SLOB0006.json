@@ -4,10 +4,10 @@
 	"date": "2025-10-01T19:32:50.834Z",
 	"name": "note2",
 	"font": "Calibri",
-	"fontSize": 20,
+	"fontSize": 13,
 	"bold": false,
 	"fillStyle": "#393939",
-	"textAlign": "center",
+	"textAlign": "left",
 	"template": {
 		"__keys": ["code"],
 		"Id": "4ff64cba9ea0e501112a088a513d37b7abb86a5c",
@@ -23,8 +23,8 @@
 	"__keys": ["code"],
 	"active": true,
 	"enabled": true,
-	"x": 315,
-	"y": 300,
+	"x": 310,
+	"y": 280,
 	"width": 200,
 	"height": 50,
 	"__trMap": []
