@@ -4,7 +4,7 @@
 	"date": "2025-10-01T19:32:37.118Z",
 	"name": "note1",
 	"font": "Calibri",
-	"fontSize": 15,
+	"fontSize": 13,
 	"bold": false,
 	"fillStyle": "#393939",
 	"textAlign": "left",
@@ -24,7 +24,7 @@
 	"active": true,
 	"enabled": true,
 	"x": 40,
-	"y": 185,
+	"y": 275,
 	"width": 200,
 	"height": 50,
 	"__trMap": []
