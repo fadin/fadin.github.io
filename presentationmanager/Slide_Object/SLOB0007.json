@@ -5,7 +5,7 @@
 	"name": "note3",
 	"font": "Calibri",
 	"fillStyle": "#393939",
-	"textAlign": "center",
+	"textAlign": "left",
 	"template": {
 		"__keys": ["code"],
 		"Id": "8bb42eaa31fb1a565913a6d503590d1438ed305e",
@@ -21,9 +21,11 @@
 	"__keys": ["code"],
 	"active": true,
 	"enabled": true,
+	"x": 315,
+	"y": 185,
 	"width": 200,
 	"height": 50,
-	"fontSize": 30,
-	"bold": true,
+	"fontSize": 15,
+	"bold": false,
 	"__trMap": []
 }
