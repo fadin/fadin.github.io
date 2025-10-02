@@ -3,7 +3,7 @@
 	"code": "SLOB0001",
 	"date": "2025-10-01T19:15:55.341Z",
 	"name": "title",
-	"font": "bold 30px Calibri",
+	"font": "Calibri",
 	"fillStyle": "#393939",
 	"textAlign": "center",
 	"template": {
@@ -23,6 +23,8 @@
 	"enabled": true,
 	"x": 415,
 	"y": 50,
+	"fontSize": 30,
+	"bold": true,
 	"width": 30,
 	"height": 30,
 	"__trMap": []
