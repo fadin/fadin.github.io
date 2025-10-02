@@ -4,9 +4,9 @@
 	"date": "2025-10-01T19:32:19.876Z",
 	"name": "note3 title",
 	"font": "Calibri",
-	"fontSize": 20,
-	"bold": false,
-	"fillStyle": "#393939",
+	"fontSize": 15,
+	"bold": true,
+	"fillStyle": "white",
 	"textAlign": "center",
 	"template": {
 		"__keys": ["code"],
@@ -24,7 +24,7 @@
 	"active": true,
 	"enabled": true,
 	"x": 690,
-	"y": 290,
+	"y": 185,
 	"width": 200,
 	"height": 50,
 	"__trMap": []
