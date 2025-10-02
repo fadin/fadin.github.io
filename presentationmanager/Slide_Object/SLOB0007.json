@@ -21,11 +21,11 @@
 	"__keys": ["code"],
 	"active": true,
 	"enabled": true,
-	"x": 315,
-	"y": 185,
+	"x": 585,
+	"y": 280,
 	"width": 200,
 	"height": 50,
-	"fontSize": 15,
+	"fontSize": 13,
 	"bold": false,
 	"__trMap": []
 }
