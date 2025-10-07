@@ -1,0 +1,10 @@
+{
+	"Id": "0199bd43407c740f835c0e3e4320f667",
+	"code": "sandy.someone",
+	"date": "2025-10-06T21:00:00.000Z",
+	"name": "Sandy Someone",
+	"__keys": ["code"],
+	"active": true,
+	"enabled": true,
+	"__trMap": []
+}
