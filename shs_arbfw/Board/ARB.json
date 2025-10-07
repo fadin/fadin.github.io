@@ -1,0 +1,10 @@
+{
+	"Id": "0199bd238982719380186d2726979030",
+	"code": "ARB",
+	"date": "2025-10-06T21:00:00.000Z",
+	"name": "Architecture Review Board",
+	"__keys": ["code"],
+	"active": true,
+	"enabled": true,
+	"__trMap": []
+}
