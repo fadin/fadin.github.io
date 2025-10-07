@@ -1,8 +1,7 @@
 {
-	"Id": "45b4d4928033eb1d500aa1c554bf2d76773b9ab3",
+	"Id": "8b924dc0c4ea0e15e6f67bf5d33fc60f9d71f705",
 	"code": "ARB",
-	"date": "2025-10-06T21:00:00.000Z",
-	"name": "Architecture Review Board",
+	"date": "2025-10-07T06:05:17.936Z",
 	"__keys": ["code"],
 	"active": true,
 	"enabled": true,
