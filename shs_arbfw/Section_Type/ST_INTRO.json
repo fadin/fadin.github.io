@@ -1,0 +1,10 @@
+{
+	"Id": "0199bd4739277558bb7f0dba1f3af20b",
+	"code": "ST_INTRO",
+	"date": "2025-10-06T21:00:00.000Z",
+	"name": "Introduction",
+	"__keys": ["code"],
+	"active": true,
+	"enabled": true,
+	"__trMap": []
+}
