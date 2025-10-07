@@ -1,0 +1,22 @@
+{
+	"Id": "0199bd44d54b763ab54f9199d6ad0c48",
+	"code": "BRM0001",
+	"date": "2025-10-06T21:00:00.000Z",
+	"name": "Sandy Someone - ARB",
+	"start": "2025-10-07T06:03:32.000Z",
+	"board": {
+		"__keys": ["code"],
+		"Id": "45b4d4928033eb1d500aa1c554bf2d76773b9ab3",
+		"__reused": 2,
+		"code": "ARB"
+	},
+	"member": {
+		"__keys": ["code"],
+		"Id": "0199bd44e2297713bd440c81d695ba61",
+		"__reused": 2
+	},
+	"__keys": ["code"],
+	"active": true,
+	"enabled": true,
+	"__trMap": []
+}
