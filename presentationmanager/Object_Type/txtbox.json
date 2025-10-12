@@ -1,37 +1,20 @@
 {
-	"Id": "312d06c70c7bf4f5a1010b4279d4a82a43f9419d",
+	"Id": "0371ce9c13fb48938c66f0ae43559e0f79219330",
 	"code": "txtbox",
 	"date": "2025-10-12T06:31:37.024Z",
 	"name": "TextBox",
 	"type_Slide_Objects": [{
-		"Id": "0199d71e214e71a49d50294656254c77",
-		"code": "SLTMP19_0",
-		"date": "2025-10-12T06:31:37.024Z",
-		"font": "Calibri",
-		"fillStyle": "#393939",
-		"textAlign": "center",
-		"type": {
-			"__keys": ["code"],
-			"Id": "312d06c70c7bf4f5a1010b4279d4a82a43f9419d",
-			"__reused": 2,
-			"code": "txtbox"
-		},
 		"__keys": ["code"],
-		"active": true,
-		"enabled": true,
-		"x": 410,
-		"y": 40,
-		"width": 600,
-		"height": 50,
-		"fontSize": 25,
-		"bold": true
+		"Id": "0199d71e214e71a49d50294656254c77",
+		"__reused": 2,
+		"code": "SLTMP19_0"
 	}, {
 		"__keys": ["code"],
-		"__reused": 2,
+		"__reused": 3,
 		"code": "SLTMP19_1"
 	}, {
 		"__keys": ["code"],
-		"__reused": 2,
+		"__reused": 3,
 		"code": "SLTMP19_2"
 	}],
 	"__keys": ["code"],
