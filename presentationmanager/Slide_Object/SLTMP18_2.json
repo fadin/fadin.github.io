@@ -1,22 +1,28 @@
 {
-	"Id": "0199d92363a870399bd3d97f1abf2bb0",
+	"Id": "d74d28ed551ae1e02b1047d14912f0a3229b22d3",
 	"code": "SLTMP18_2",
-	"date": "2025-10-12T15:56:29.509Z",
+	"date": "2025-10-12T17:04:42.795Z",
 	"font": "Calibri",
-	"fillStyle": "#292929",
+	"fillStyle": "#393939",
 	"textAlign": "right",
+	"template": {
+		"__keys": ["code"],
+		"Id": "bff8700e4c255e0758e2640d233f8cb25b871061",
+		"__reused": 13,
+		"code": "SLTMP18"
+	},
 	"type": {
 		"__keys": ["code"],
-		"Id": "562e70e45b87662e25d21004032026516e1812b3",
-		"__reused": 7,
+		"Id": "7e757f9dfeab05124ac6d2347f8484d0bc0b2cb5",
+		"__reused": 2,
 		"code": "txtbox"
 	},
 	"__keys": ["code"],
 	"active": true,
 	"enabled": true,
-	"x": 140,
-	"y": 138,
-	"width": 100,
+	"x": 170,
+	"y": 342,
+	"width": 200,
 	"height": 50,
 	"fontSize": 9,
 	"__trMap": []
