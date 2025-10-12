@@ -1,17 +1,17 @@
 {
-	"Id": "5edea5cfbb5c45a6d4877428bb17b6f34581a2b6",
+	"Id": "562e70e45b87662e25d21004032026516e1812b3",
 	"code": "txtbox",
-	"date": "2025-10-12T08:16:23.587Z",
+	"date": "2025-10-12T15:56:29.509Z",
 	"name": "TextBox",
 	"type_Slide_Objects": [{
-		"code": "SLTMP19_0",
-		"date": "2025-10-12T08:16:23.587Z",
+		"code": "SLTMP18_0",
+		"date": "2025-10-12T15:56:29.509Z",
 		"font": "Calibri",
 		"fillStyle": "#393939",
 		"textAlign": "center",
 		"type": {
 			"__keys": ["code"],
-			"Id": "5edea5cfbb5c45a6d4877428bb17b6f34581a2b6",
+			"Id": "562e70e45b87662e25d21004032026516e1812b3",
 			"__reused": 2,
 			"code": "txtbox"
 		},
@@ -25,14 +25,14 @@
 		"fontSize": 25,
 		"bold": true
 	}, {
-		"code": "SLTMP19_1",
-		"date": "2025-10-12T08:16:23.587Z",
+		"code": "SLTMP18_1",
+		"date": "2025-10-12T15:56:29.509Z",
 		"font": "Calibri",
 		"fillStyle": "#292929",
 		"textAlign": "right",
 		"type": {
 			"__keys": ["code"],
-			"Id": "5edea5cfbb5c45a6d4877428bb17b6f34581a2b6",
+			"Id": "562e70e45b87662e25d21004032026516e1812b3",
 			"__reused": 3,
 			"code": "txtbox"
 		},
@@ -46,14 +46,14 @@
 		"fontSize": 13,
 		"bold": true
 	}, {
-		"code": "SLTMP19_2",
-		"date": "2025-10-12T08:16:23.587Z",
+		"code": "SLTMP18_2",
+		"date": "2025-10-12T15:56:29.509Z",
 		"font": "Calibri",
 		"fillStyle": "#292929",
 		"textAlign": "right",
 		"type": {
 			"__keys": ["code"],
-			"Id": "5edea5cfbb5c45a6d4877428bb17b6f34581a2b6",
+			"Id": "562e70e45b87662e25d21004032026516e1812b3",
 			"__reused": 4,
 			"code": "txtbox"
 		},
