@@ -1,9 +1,10 @@
 {
-	"Id": "794a3201e5488494b3663244c66961716e3257c6",
+	"Id": "312d06c70c7bf4f5a1010b4279d4a82a43f9419d",
 	"code": "txtbox",
 	"date": "2025-10-12T06:31:37.024Z",
 	"name": "TextBox",
 	"type_Slide_Objects": [{
+		"Id": "0199d71e214e71a49d50294656254c77",
 		"code": "SLTMP19_0",
 		"date": "2025-10-12T06:31:37.024Z",
 		"font": "Calibri",
@@ -11,7 +12,7 @@
 		"textAlign": "center",
 		"type": {
 			"__keys": ["code"],
-			"Id": "794a3201e5488494b3663244c66961716e3257c6",
+			"Id": "312d06c70c7bf4f5a1010b4279d4a82a43f9419d",
 			"__reused": 2,
 			"code": "txtbox"
 		},
@@ -25,46 +26,13 @@
 		"fontSize": 25,
 		"bold": true
 	}, {
-		"code": "SLTMP19_1",
-		"date": "2025-10-12T06:31:37.024Z",
-		"font": "Calibri",
-		"fillStyle": "#292929",
-		"textAlign": "right",
-		"type": {
-			"__keys": ["code"],
-			"Id": "794a3201e5488494b3663244c66961716e3257c6",
-			"__reused": 3,
-			"code": "txtbox"
-		},
 		"__keys": ["code"],
-		"active": true,
-		"enabled": true,
-		"x": 140,
-		"y": 118,
-		"width": 200,
-		"height": 50,
-		"fontSize": 13,
-		"bold": true
+		"__reused": 2,
+		"code": "SLTMP19_1"
 	}, {
-		"code": "SLTMP19_2",
-		"date": "2025-10-12T06:31:37.024Z",
-		"font": "Calibri",
-		"fillStyle": "#292929",
-		"textAlign": "right",
-		"type": {
-			"__keys": ["code"],
-			"Id": "794a3201e5488494b3663244c66961716e3257c6",
-			"__reused": 4,
-			"code": "txtbox"
-		},
 		"__keys": ["code"],
-		"active": true,
-		"enabled": true,
-		"x": 140,
-		"y": 138,
-		"width": 100,
-		"height": 50,
-		"fontSize": 9
+		"__reused": 2,
+		"code": "SLTMP19_2"
 	}],
 	"__keys": ["code"],
 	"active": true,
