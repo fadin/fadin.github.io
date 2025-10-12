@@ -1,0 +1,24 @@
+{
+	"Id": "0199d77cb65c76bbbd0e413bceff3942",
+	"code": "SLTMP19_0",
+	"date": "2025-10-12T08:14:55.991Z",
+	"font": "Calibri",
+	"fillStyle": "#393939",
+	"textAlign": "center",
+	"type": {
+		"__keys": ["code"],
+		"Id": "dccb02300805a8d34101d94070270eb5cbd46de5",
+		"__reused": 5,
+		"code": "txtbox"
+	},
+	"__keys": ["code"],
+	"active": true,
+	"enabled": true,
+	"x": 410,
+	"y": 40,
+	"width": 600,
+	"height": 50,
+	"fontSize": 25,
+	"bold": true,
+	"__trMap": []
+}
