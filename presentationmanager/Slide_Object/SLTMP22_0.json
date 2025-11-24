@@ -1,0 +1,31 @@
+{
+	"Id": "019ab726cfa17750acfdd215cb0d25c3",
+	"code": "SLTMP22_0",
+	"date": "2025-11-24T18:36:01.008Z",
+	"font": "Calibri",
+	"fillStyle": "#393939",
+	"textAlign": "center",
+	"template": {
+		"__keys": ["code"],
+		"Id": "019ab726be6f719893fcad0612ea7951",
+		"__reused": 11,
+		"code": "SLTMP22"
+	},
+	"type": {
+		"__keys": ["code"],
+		"Id": "2859ef27436dc99470526b2d04491d6856002d00",
+		"__reused": 2,
+		"code": "txtbox"
+	},
+	"__keys": ["code"],
+	"active": true,
+	"enabled": true,
+	"order": 1,
+	"x": 410,
+	"y": 40,
+	"width": 600,
+	"height": 50,
+	"fontSize": 25,
+	"bold": true,
+	"__trMap": []
+}
