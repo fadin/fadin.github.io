@@ -1,19 +1,19 @@
 {
-	"Id": "5cc2f121f449349877c7ba66f37428d0bf56cb57",
+	"Id": "212a625356104c53e7fe0f2a14ba5d60c5be6b4c",
 	"code": "SLTMP20_0",
-	"date": "2025-12-10T12:12:57.519Z",
+	"date": "2025-12-10T12:15:51.994Z",
 	"font": "Calibri",
 	"fillStyle": "#393939",
 	"textAlign": "center",
 	"template": {
 		"__keys": ["code"],
-		"Id": "132591cd58ed99baa02531e28e343dfcc6509d1c",
+		"Id": "1cbaa8118988889e134f188927d72a778928afc2",
 		"__reused": 3,
 		"code": "SLTMP20"
 	},
 	"type": {
 		"__keys": ["code"],
-		"Id": "d59d80a9ae7255a96d1a61fa2486973b96b32f78",
+		"Id": "b9110330b14c9450922c8eeab31a62e017ba767d",
 		"__reused": 2,
 		"code": "txtbox"
 	},
