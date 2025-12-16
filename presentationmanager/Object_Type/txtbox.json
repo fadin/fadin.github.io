@@ -1,11 +1,6 @@
 {
-	"Id": "792f9827c4245816626ad661b33605b5a204c2b5",
-	"code": "txtbox",
-	"name": "TextBox",
-	"date": "2025-12-16T10:39:30.180Z",
 	"__keys": ["code"],
-	"active": true,
-	"enabled": true,
-	"order": 1,
-	"__trMap": []
+	"Id": "118c4042721b5dda835f7158b85fc9f284d79472",
+	"__reused": 2,
+	"code": "txtbox"
 }
